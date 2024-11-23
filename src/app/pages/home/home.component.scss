@@ -1,0 +1,11 @@
+@use './../../../style/tokens.scss'as *;
+
+.front-zapfarma-home {
+    color: $color-background-bk;
+    &__container {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+}

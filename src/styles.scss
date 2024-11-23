@@ -1,0 +1,22 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// $front-zapfarma-primary: mat.define-palette(mat.$indigo-palette);
+// $front-zapfarma-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+// $front-zapfarma-warn: mat.define-palette(mat.$red-palette);
+
+/* You can add global styles to this file, and also import other style files */
+body {
+    position: relative;
+    height: 100%;
+    margin: 0;
+    // background-color: black;
+    font-family: system-ui;
+}
+button {
+    border: 0;
+}
+

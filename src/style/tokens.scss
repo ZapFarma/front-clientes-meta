@@ -1,0 +1,39 @@
+$primary-color: #643df2;
+$primary-palette-variant1: #643df2;
+$primary-palette-variant2: #7552f2;
+$primary-palette-variant3: #9f88f2;
+$primary-palette-variant5: #c9bef2;
+$primary-palette-variant4: #f2f2f2;
+$secondary-color: #55d976;
+$secondary-contrast-color: #2a702d;
+$gray-palette-strong: #9e9e9e;
+$gray-palette: #E7E7E7;
+$error-campo: #fe4b3b;
+
+$color-text-wh: #ffffff;
+$color-text-bk: #000000;
+$color-wh: #ffffff;
+$color-background-bk: #000000;
+$color-background-wh: #ffffff;
+
+$font-size-medium: 14px;
+$font-size-s-medium: 16px;
+$font-size-small: 12px;
+$font-size-x-small: 10px;
+$font-size-xx-small: 9px;
+$font-size-large: 18px;
+$font-size-large-20: 20px;
+$font-size-x-large: 24px;
+$font-size-xx-large: 32px;
+$font-size-xs-large: 40px;
+
+$space-medium: 16px;
+$space-s-medium: 12px;
+$space-small: 8px;
+$space-large: 24px;
+$space-x-large: 32px;
+
+.mat-mdc-raised-button:not(:disabled) {
+    background-color: #643df2 !important;
+    color: #ffffff;
+}

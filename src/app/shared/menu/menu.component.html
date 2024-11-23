@@ -1,0 +1,102 @@
+<!-- <front-zapfarma-toolbar></front-zapfarma-toolbar> -->
+<div class="mat-app-background basic-container">
+<mat-sidenav-container class="container" autosize>
+	<mat-sidenav #sidenav class="sidenav" mode="side" opened="true">
+		<mat-nav-list>
+      <mat-list-item class="top-menu">
+        <a *ngIf="isExpanded">
+          <span *ngIf="isExpanded || isShowing">Zapfarma [AI]</span>
+        </a>
+        <button class="expanded" mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>{{isExpanded ? 'chevron_left': 'chevron_right'}}</mat-icon></button>
+				<!-- <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon> -->
+			</mat-list-item>
+       <mat-list-item class="area-account">
+        <mat-icon mat-list-icon>lock</mat-icon>
+        <div *ngIf="isExpanded || isShowing">
+          <p class="sub-title">Paulo Machado <span class="sair">(sair)</span></p>
+        </div>
+    </mat-list-item>
+			<mat-list-item class="top-menu">
+        <a href="#/dashboard">
+          <mat-icon mat-list-icon>dashboard</mat-icon>
+          <span *ngIf="isExpanded || isShowing">Dashboard</span>
+        </a>
+				<!-- <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon> -->
+			</mat-list-item>
+      <mat-list-item class="top-menu">
+        <a href="#/mensageria">
+          <mat-icon mat-list-icon>chat</mat-icon>
+          <span *ngIf="isExpanded || isShowing">Mensageria</span>
+        </a>
+			</mat-list-item>
+      <mat-list-item class="top-menu">
+        <a href="#/cobrancas">
+          <mat-icon mat-list-icon>paid</mat-icon>
+          <span *ngIf="isExpanded || isShowing">Cobranças</span>
+        </a>
+			</mat-list-item>
+      <mat-list-item class="top-menu">
+        <a href="#/cobrancas">
+          <mat-icon mat-list-icon>people_alt</mat-icon>
+          <span *ngIf="isExpanded || isShowing">Relacionamento com cliente</span>
+        </a>
+			</mat-list-item>
+      <mat-list-item class="top-menu">
+        <a href="#/cobrancas">
+          <mat-icon mat-list-icon>question_answer</mat-icon>
+          <span *ngIf="isExpanded || isShowing">NPS</span>
+        </a>
+			</mat-list-item>
+      <mat-list-item class="top-menu">
+        <a href="#/cobrancas">
+          <mat-icon mat-list-icon>cloud_circle</mat-icon>
+          <span *ngIf="isExpanded || isShowing">CRM</span>
+        </a>
+			</mat-list-item>
+      <mat-list-item class="top-menu">
+        <a href="#/cobrancas">
+          <mat-icon mat-list-icon>summarize</mat-icon>
+          <span *ngIf="isExpanded || isShowing">Relatórios</span>
+        </a>
+			</mat-list-item>
+      <mat-list-item class="top-menu">
+				<mat-icon mat-list-icon>smart_toy</mat-icon>
+        <span *ngIf="isExpanded || isShowing">Biblioteca de IA</span>
+				<!-- <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon> -->
+			</mat-list-item>
+      <mat-list-item class="top-menu" (click)="showSubmenu = !showSubmenu">
+				<mat-icon mat-list-icon>account_circle</mat-icon>
+        <span *ngIf="isExpanded || isShowing">Minha conta</span>
+				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+			</mat-list-item>
+			<div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+				<a mat-list-item href="#">Alterar dados</a>
+				<a mat-list-item href="#">Configurações</a>
+        <a mat-list-item href="#">Usuários do sistema</a>
+				<!-- <mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent">
+					<span class="full-width" *ngIf="isExpanded || isShowing">Nested Menu</span>
+					<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+				</mat-list-item>
+				<div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || isExpanded">
+					<mat-list-item>SubSubmenu Item 1</mat-list-item>
+					<mat-list-item>SubSubmenu Item 2</mat-list-item>
+				</div> -->
+			</div>
+      <!-- <mat-list-item class="area-account">
+        <div  *ngIf="isExpanded || isShowing">
+          <p class="title">Usuario logado:</p>
+          <p class="sub-title">Paulo Machado</p>
+        </div>
+    </mat-list-item> -->
+		</mat-nav-list>
+    <mat-nav-list>
+  </mat-nav-list>
+	</mat-sidenav>
+
+	<div class="sidenav-content">
+		<ng-content #name></ng-content>
+	</div>
+
+</mat-sidenav-container>
+
+</div>

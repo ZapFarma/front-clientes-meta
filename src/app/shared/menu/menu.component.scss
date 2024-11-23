@@ -1,0 +1,100 @@
+@use './../../../style/tokens.scss' as *;
+
+a {
+    text-decoration: none;
+    color: $color-wh;
+    width: 100%;
+    justify-content: initial;
+    display: flex;
+    align-items: center;
+  }
+
+.container {
+    height: 100vh;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    button {
+        cursor: pointer;
+        background-color: $primary-palette-variant3;
+        width: 25px;
+        height: 25px;
+        padding: 0;
+    }
+  }
+  .sidenav-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sidenav {
+     user-select: none;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .menu-button {
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
+  }
+
+  .menu-button.rotated {
+    transform: rotate(180deg);
+  }
+
+  .submenu {
+    overflow-y: hidden;
+    transition: transform 300ms ease;
+    transform: scaleY(0);
+    transform-origin: top;
+    padding-left: 30px;
+  }
+
+  .submenu.expanded {
+    transform: scaleY(1);
+  }
+
+  .area-account {
+    display: flex;
+    color: $primary-palette-variant3;
+    position: relative;
+    cursor: default;
+    border-bottom: 1px dashed $primary-palette-variant3;
+    border-top: 1px dashed $primary-palette-variant3;
+    .title {
+        font-size: 12px;
+        font-weight: 900;
+    }
+    .sub-title {
+        font-size: 10px;
+        .sair {
+            cursor: pointer;
+            color: $color-text-wh;
+        }
+    }
+    p {
+        margin: 0;
+        color: $primary-palette-variant5;
+    }
+  }
+
+  ::ng-deep {
+    .mdc-list-item__primary-text {
+        display: flex !important;
+        color: $color-wh !important;
+        position: relative;
+        mat-icon {
+            padding-right: 8px;
+        }
+    }
+
+    .mat-drawer-inner-container {
+        overflow: hidden !important;
+      }
+  }
+
+  mat-sidenav {
+    background-color: $primary-color;
+    color: $color-wh;
+    border-top-right-radius: 20px;
+  }
