@@ -11,40 +11,64 @@ import { Swiper } from 'swiper';
 import { frontZapFarmaHeaderComponent } from '../../shared/header/header.component';
 import { FooterComponent } from '../../shared/footer/footer.component';
 import { transition, trigger, useAnimation } from '@angular/animations';
-import { backOutDown, backOutUp, bounce, bounceIn, fadeIn, flash, } from 'ng-animate';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  backOutDown,
+  backOutUp,
+  bounce,
+  bounceIn,
+  fadeIn,
+  flash,
+} from 'ng-animate';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ContatoService } from '../../services/contatos/contatos.service';
-import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HttpHandler,
+} from '@angular/common/http';
 import { WebHookService } from '../../services/webhook/webhook.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { frontZapFarmaMenuComponent } from 'src/app/shared/menu/menu.component';
-import { ToolbarComponent } from "../../shared/toolbar/toolbar.component";
+import { ToolbarComponent } from '../../shared/toolbar/toolbar.component';
+import { MatIconModule } from '@angular/material/icon';
+import { PlanosAssinaturasComponent } from 'src/app/shared/planos-assinaturas/planos-assinaturas.component';
 
 register();
 
 @Component({
   selector: 'front-zapfarma-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  styleUrls: ['./home.component.scss', './wp-lite.css', './style9030.css'],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule, frontZapFarmaMenuComponent, frontZapFarmaHeaderComponent, FooterComponent, ReactiveFormsModule, NgxMaskDirective, HttpClientModule, ToolbarComponent],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    frontZapFarmaMenuComponent,
+    frontZapFarmaHeaderComponent,
+    FooterComponent,
+    ReactiveFormsModule,
+    NgxMaskDirective,
+    HttpClientModule,
+    ToolbarComponent,
+    PlanosAssinaturasComponent
+  ],
   animations: [
     trigger('myAnimation0', [transition('* => *', useAnimation(fadeIn))]),
     trigger('myAnimation1', [transition('* => *', useAnimation(bounceIn))]),
   ],
-  providers: [
-    provideNgxMask(),
-    ContatoService,
-    WebHookService,
-    HttpClient,
-],
+  providers: [provideNgxMask(), ContatoService, WebHookService, HttpClient],
 })
 export class HomeComponent implements OnInit {
   formSendData!: FormGroup;
   isSubmit = false;
-  isValidForm = false
+  isValidForm = false;
   animate0 = false;
   animate1 = false;
   animate2 = false;
@@ -75,10 +99,7 @@ export class HomeComponent implements OnInit {
     private _contatoService: ContatoService,
     private _webhooService: WebHookService,
     private deviceService: DeviceDetectorService
-  ) { 
-  }
-
-
+  ) {}
 
   ngOnInit() {
     const swiperEl = document.querySelector('swiper-container');
@@ -222,7 +243,6 @@ export class HomeComponent implements OnInit {
     this.animateBalaoAvatar = true;
   }
 
-
   Slide1animateBalao15() {
     setTimeout(() => {
       this.animateBalaoZapfarma2 = true;
@@ -238,55 +258,52 @@ export class HomeComponent implements OnInit {
   }
 
   sendForm() {
-    if(this.formSendData.valid) {
+    if (this.formSendData.valid) {
       this.enviarDados();
     }
   }
 
-  
   enviarDados() {
-    this.isSubmit = true
+    this.isSubmit = true;
     const dados = this.formSendData.getRawValue() as any;
-    const device = this.deviceService.getDeviceInfo().deviceType
-    const browser = this.deviceService.getDeviceInfo().browser
-    dados.date_time = this.tratarData()
-    dados.dispositivo = device ? device : 'Não encontrado'
-    dados.browser = browser ? browser : 'Não encontrado'
+    const device = this.deviceService.getDeviceInfo().deviceType;
+    const browser = this.deviceService.getDeviceInfo().browser;
+    dados.date_time = this.tratarData();
+    dados.dispositivo = device ? device : 'Não encontrado';
+    dados.browser = browser ? browser : 'Não encontrado';
 
     this._contatoService.enviarContato(dados).subscribe((response) => {
-      if(response){
+      if (response) {
         this.isValidForm = true;
         this.enviarDadosWebhook(dados);
       }
-  })
+    });
   }
 
   enviarDadosWebhook(dados: any) {
     this._webhooService.enviarContatoWebHook(dados).subscribe((response) => {
-      if(response){
-        this.isSubmit = false
+      if (response) {
+        this.isSubmit = false;
         this.isValidForm = true;
         this.formSendData.reset();
       }
-  })
+    });
   }
 
-  
- tratarData() {
-  const date = new Date();
-  date.setHours(date.getHours() - 3);
-  const isodate = date.toISOString();
-  return isodate
-}
+  tratarData() {
+    const date = new Date();
+    date.setHours(date.getHours() - 3);
+    const isodate = date.toISOString();
+    return isodate;
+  }
 
   criarForm() {
     this.formSendData = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       nome: ['', [Validators.required, Validators.minLength(5)]],
-      telefone: ['', [Validators.required]]
+      telefone: ['', [Validators.required]],
     });
   }
-
 
   limparAnimacao() {
     this.animate0 = false;

@@ -1,0 +1,259 @@
+@use './../../../style/tokens.scss'as *;
+
+
+.front-zapfarma-planos-assinaturas {
+
+    @media screen and (max-width: 768px) {
+        display: block;
+    }
+    background-color: $gray-palette ;
+    width: 100%;
+    margin-bottom: $space-large;
+    &__titulo {
+        @media screen and (max-width: 768px) {
+            width: 350px;
+            padding: $space-large 0px;
+            margin: 0 auto;
+         }
+        @media screen and (min-width: 768px) {
+            width: 50%;
+         }
+         width: 100%;
+         padding: 0px $space-large 0px $space-large;
+         position: relative;
+        h1 {
+            font-size: $font-size-xs-large;
+            @media screen and (min-width: 1024px) {
+                font-size: 60px;
+             }
+        }
+        span {
+            color: $primary-color;
+        }
+    }
+
+    &__solucoes {
+        @media screen and (max-width: 1024px) {
+            display: block;
+            width: 100%;
+        }
+        width: 98%;
+        display: flex;
+        gap: 8px;
+        .assinar {
+            margin: $space-medium auto;
+            text-align: center;
+        }
+        button {
+            width: 50%;
+            text-transform: capitalize;
+        }
+        &__freemium {
+            @media screen and (max-width: 1024px) {
+                width: 350px;
+                padding: $space-large 0;
+                margin: 0 auto;
+
+            }
+            padding: 0 0 0 $space-large;
+            width: 35%;
+            gap: $space-small;
+            position: relative;
+            mat-icon {
+                position: relative;
+                color: $gray-palette-strong;
+                vertical-align: middle;
+                bottom: 3px;
+            }
+            .td-topo {
+                padding: $space-small;
+                background-color: $gray-palette-topo;
+                border: 3px solid $gray-palette-strong;
+                border-top-right-radius: 20px;
+                border-top-left-radius: 20px;
+                display: flex;
+                justify-content: center;
+                font-weight: 900;
+                font-size: $font-size-x-large;
+            }
+            .td-final {
+                // background-color: $secondary-color-light;
+                border: 3px solid $gray-palette-strong;
+                border-bottom-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+                font-size: $font-size-large;
+                padding: $space-small;
+                display: block;
+                text-align: center;
+                p {
+                    margin: 0;
+                    font-weight: 900;
+                }
+                span {
+                    font-size: $font-size-small;
+                }
+            }
+            .td-color {
+                font-size: $font-size-small;
+                padding: $space-small;
+                background-color: $gray-palette-topo;
+                border: 3px solid $gray-palette-strong;
+                border-bottom: none;
+                border-top: none;
+            }
+            table {
+                margin: 0;
+                padding: 0;
+                border-spacing: 0;
+            }
+            td {
+                height: 100px;
+            }
+            .td-normal {
+                border: 3px solid $gray-palette-strong;
+                border-bottom: none;
+                border-top: none;
+                font-size: $font-size-small;
+                padding: $space-small;
+            }
+        }
+
+        &__basico {
+            @media screen and (max-width: 1024px) {
+                width: 350px;
+                padding: $space-large 0;
+                margin: 0 auto;
+
+            }
+            width: 35%;
+            position: relative;
+            mat-icon {
+                position: relative;
+                color: $secondary-color;
+                vertical-align: middle;
+                bottom: 3px;
+            }
+            .td-topo {
+                padding: $space-small;
+                background-color: $primary-color-light;
+                border: 3px solid $secondary-color;
+                border-top-right-radius: 20px;
+                border-top-left-radius: 20px;
+                display: flex;
+                justify-content: center;
+                font-weight: 900;
+                font-size: $font-size-x-large;
+            }
+            .td-final {
+                // background-color: $primary-color-light;;
+                border: 3px solid $secondary-color;
+                border-bottom-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+                font-size: $font-size-large;
+                padding: $space-small;
+                display: block;
+                text-align: center;
+                p {
+                    margin: 0;
+                    font-weight: 900;
+                }
+                span {
+                    font-size: $font-size-small;
+                }
+
+            }
+            .td-color {
+                font-size: $font-size-small;
+                padding: $space-small;
+                background-color: $primary-color-light;;
+                border: 3px solid $secondary-color;
+                border-bottom: none;
+                border-top: none;
+            }
+            table {
+                margin: 0;
+                padding: 0;
+                border-spacing: 0;
+            }
+            td {
+                height: 100px;
+            }
+            .td-normal {
+                border: 3px solid $secondary-color;
+                border-bottom: none;
+                border-top: none;
+                font-size: $font-size-small;
+                padding: $space-small;
+            }
+        }
+
+        &__profissional {
+            @media screen and (max-width: 1024px) {
+                width: 350px;
+                padding: $space-large 0;
+                margin: 0 auto;
+
+            }
+            width: 35%;
+            position: relative;
+            mat-icon {
+                position: relative;
+                color: $primary-color;
+                vertical-align: middle;
+                bottom: 3px;
+            }
+            .td-topo {
+                padding: $space-small;
+                background-color: $secondary-color-light;
+                border: 3px solid $primary-color;
+                border-top-right-radius: 20px;
+                border-top-left-radius: 20px;
+                display: flex;
+                justify-content: center;
+                font-weight: 900;
+                font-size: $font-size-x-large;
+            }
+            .td-final {
+                // background-color: $primary-color-light;;
+                border: 3px solid $primary-color;
+                border-bottom-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+                font-size: $font-size-large;
+                padding: $space-small;
+                display: block;
+                text-align: center;
+                p {
+                    margin: 0;
+                    font-weight: 900;
+                }
+                span {
+                    font-size: $font-size-small;
+                }
+
+            }
+            .td-color {
+                font-size: $font-size-small;
+                padding: $space-small;
+                background-color: $secondary-color-light;
+                border: 3px solid $primary-color;
+                border-bottom: none;
+                border-top: none;
+            }
+            table {
+                margin: 0;
+                padding: 0;
+                border-spacing: 0;
+            }
+            td {
+                height: 100px;
+            }
+            .td-normal {
+                border: 3px solid $primary-color;
+                border-bottom: none;
+                border-top: none;
+                font-size: $font-size-small;
+                padding: $space-small;
+            }
+        }
+    }
+}

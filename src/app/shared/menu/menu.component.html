@@ -5,7 +5,7 @@
 		<mat-nav-list>
       <mat-list-item class="top-menu">
         <a *ngIf="isExpanded">
-          <span *ngIf="isExpanded || isShowing">Zapfarma [AI]</span>
+          <span class="logo" *ngIf="isExpanded || isShowing">Zapfarma [AI]</span>
         </a>
         <button class="expanded" mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>{{isExpanded ? 'chevron_left': 'chevron_right'}}</mat-icon></button>
 				<!-- <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon> -->

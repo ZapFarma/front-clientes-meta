@@ -9,8 +9,22 @@ a {
     align-items: center;
 }
 .mat-toolbar {
-    background-color: $primary-color;
+    background-color: $color-background-bk;
     color: $color-wh;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    z-index: 9999;
+    .logo {
+        color: $color-text-bk;
+        margin: $space-small 0 0 0;
+        img {
+            width: 80px;
+        }
+    }
+    mat-icon {
+        // color: $color-background-bk;
+    }
 }
 .example-spacer {
     flex: 1 1 auto;

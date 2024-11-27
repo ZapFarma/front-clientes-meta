@@ -2,10 +2,63 @@
 
 .front-zapfarma-home {
     color: $color-background-bk;
-    &__container {
+    &__container_01 {
+        @media screen and (max-width: 768px) {
+            display: block;
+        }
         width: 100%;
-        margin: 0 auto;
+        padding: 100px 0 0 0;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        
+        &__titulo {
+            @media screen and (min-width: 768px) {
+                width: 44.225%;
+             }
+             padding: 0px $space-large 0px $space-large;
+             position: relative;
+            h1 {
+                font-size: $font-size-xs-large;
+                @media screen and (min-width: 1024px) {
+                    font-size: 60px;
+                 }
+            }
+            span {
+                color: $primary-color;
+            }
+            .sub-titulo {
+                font-size: $font-size-large;
+                padding-bottom: $space-large;
+            }
+        }
+
+        &__wp {
+            @media screen and (min-width: 780px) {
+                width: 70.225%;
+                justify-content: center;
+             }
+             @media screen and (max-width: 900px) {
+                width: 90.225%;
+                justify-content: initial;
+                padding: 0;
+             }
+             padding: 0px $space-large 0px $space-large;
+             position: relative;
+             display: flex;
+             margin: 0 auto;
+             justify-content: center;
+        }
+
+
     }
+    &__container_02 {
+
+        @media screen and (max-width: 768px) {
+            display: block;
+        }
+        background-color: $gray-palette ;
+        width: 100%;
+        margin-bottom: $space-large;
+    }
+   
 }
