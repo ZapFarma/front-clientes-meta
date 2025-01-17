@@ -80,7 +80,7 @@ export class EditarEmpresasComponent {
     error:any
     cep!: CEP;
     _id: any;
-    farmacia: any;
+    farmacia!: any;
   
   
     constructor(
@@ -128,6 +128,7 @@ export class EditarEmpresasComponent {
     criarForm(){
       this.formLogin = this.formBuilder.group({
         'id': new FormControl(null,[ Validators.required,Validators.minLength(1),Validators.maxLength(150)]),
+        'idAfiliados': new FormControl(null,[ Validators.required,Validators.minLength(1),Validators.maxLength(150)]),
         'nomeFantasia': new FormControl(null,[ Validators.required,Validators.minLength(5),Validators.maxLength(150)]),
         'razaoSocial': new FormControl(null,[ Validators.required,Validators.minLength(5),Validators.maxLength(150)]),
         'email': new FormControl(null, [ Validators.required,Validators.minLength(1),Validators.maxLength(200)]),
@@ -183,7 +184,7 @@ export class EditarEmpresasComponent {
     atualizar() {
       // this.btnDisable = true
       if (this.formLogin.valid && this.validCpf == true) {
-        this._farmaciasService.AtualizarFarmacias(this.formLogin.value)
+        this._farmaciasService.AtualizarFarmacias(this.formLogin.value, this._id)
         .pipe(
           catchError((ret) => {
             this.sucesso = false;

@@ -83,9 +83,10 @@ export class FarmaciasService {
      * Consultando Servicos na Servidor, retornando JSON Ge
      * @author Paulo Eduardo
      */
-       AtualizarFarmacias(body: any) {
+       AtualizarFarmacias(body: any, id: any) {
         body.senha = btoa(body.senha);
-        body.idAfiliados = this.usuario.id
+        // body.idAfiliados = this.usuario.id;
+        body.id = id;
         return this._httpClient.put(
           `${environment.apiProd}/hotmart_farmacias/${body.id}`,
           body,
