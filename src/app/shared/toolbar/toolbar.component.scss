@@ -8,8 +8,14 @@ a {
     display: flex;
     align-items: center;
 }
+.login {
+    color: #fff;
+    mat-icon {
+        padding: $space-small;
+    }
+}
 .mat-toolbar {
-    background-color: $color-background-bk;
+    background-color: $primary-color;
     color: $color-wh;
     position: fixed;
     display: flex;

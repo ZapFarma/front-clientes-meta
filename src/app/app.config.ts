@@ -4,6 +4,8 @@ import { appRoutes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UsuariosService } from './services/usuarios/usuarios.service';
+import { HttpClient, HttpHandler, provideHttpClient } from '@angular/common/http';
 
 
 
@@ -13,6 +15,9 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    importProvidersFrom([BrowserAnimationsModule])
+    importProvidersFrom([BrowserAnimationsModule]),
+    { provide: UsuariosService },
+    provideHttpClient() 
+
   ],
 };

@@ -2,21 +2,29 @@
   <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <span class="logo"><img src="../../../assets/imgs/zapFarma-logo-fn.png"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <a href="https://chat.zapfarma.com"><mat-icon>account_circle</mat-icon></a>
+  <span class="logo"><img src="../../../assets/imgs/logo-branca.png"></span>
+  <button mat-button aria-label="Login">
+    <a class="login" href="#/login"><mat-icon>account_circle</mat-icon>Login</a>
   </button>
 </mat-toolbar>
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item>
-    <mat-icon>help_outline</mat-icon>
-    <span>Como funciona</span>
+    <a href="https://zapfarma.com/afiliados">
+      <mat-icon>help_outline</mat-icon>
+      <span>Como funciona</span>
+  </a>
   </button>
   <button mat-menu-item>
-    <a href="https://chat.zapfarma.com">
+    <a href="#/login">
       <mat-icon>account_circle</mat-icon>
-      <span>Área do cliente</span>
+      <span>Login</span>
+    </a>
+  </button>
+  <button mat-menu-item>
+    <a href="https://zapfarma.com">
+      <mat-icon>add_business</mat-icon>
+      <span>Planos</span>
     </a>
   </button>
 </mat-menu>

@@ -3,6 +3,9 @@
 .front-zapfarma-home {
     color: $color-background-bk;
     &__container_01 {
+        background-image: url("./../../../assets/imgs/logo-outline-25.png");
+        background-repeat: repeat-x repeat-y;
+        background-position: right top;
         @media screen and (max-width: 768px) {
             display: block;
         }

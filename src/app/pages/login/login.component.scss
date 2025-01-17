@@ -6,12 +6,17 @@
     position: relative;
 
     &__image-login {
-        background-color: $primary-palette-variant3;
+        background-color: $primary-color;
         width: 40%;
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
+        .logo {
+            width: 50%;
+            cursor: pointer;
+        }
     }
 
     &__login {
@@ -21,10 +26,31 @@
         display: grid;
         justify-content: center;
         align-items: center;
+        .container-logo {
+            display: flex;
+            justify-content: center;
+            
+            .logo-mobile {
+                width: 200px;
+                cursor: pointer;
+            }
+        }
+        
     }
 
     .h1-mobile {
         display: none;
+    }
+
+    .no-login {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        span {
+            padding: 8px;
+            cursor: pointer;
+        }
     }
 
     @media (max-width: 750px) {

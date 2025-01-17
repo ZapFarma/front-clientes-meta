@@ -1,29 +1,45 @@
 <div class="front-zapfarma-login">
   <div class="front-zapfarma-login__image-login">
-    <h1>Zapfarma [IA]</h1>
+    <img (click)="home()" class="logo" src="../../../assets/imgs/logo-branca.png">
   </div>
   <div class="front-zapfarma-login__login">
     <div>
 
       <mat-card class="example-card" appearance="outlined">
         <mat-card-content>
-          <h1 class="h1-mobile">Zapfarma [IA]</h1>
-          <front-zapfarma-header title="Área do cliente"></front-zapfarma-header>
-          <form class="example-form">
+          <div class="container-logo">          
+            <img (click)="home()" class="logo-mobile" src="../../../assets/imgs/zapFarma-color.png">
+          </div>
+          <front-zapfarma-header title="Área do afiliado"></front-zapfarma-header>
+          <form [formGroup]="formLogin" novalidate>
             <mat-form-field class="example-full-width">
               <mat-label>email</mat-label>
-              <input matInput placeholder="Digite o email de compra">
+              <input matInput (keydown)="onKeydown($event)" placeholder="Informe o email do usuário" formControlName="email">
+              <mat-error *ngIf="formLogin.get('email')?.hasError('email') && formLogin.get('email')?.touched">
+                Por favor informe um email válido
+              </mat-error>
+              <mat-error *ngIf="formLogin.get('email')?.hasError('required') && formLogin.get('email')?.touched">
+                Email é <strong>obrigatório</strong>
+              </mat-error>
             </mat-form-field>
       
             <mat-form-field class="example-full-width">
               <mat-label>senha</mat-label>
-              <input type="password" matInput placeholder="Informe sua senha">
+              <input (keydown)="onKeydown($event)" matInput placeholder="Informe a senha" [type]="hide ? 'password' : 'text'" formControlName="senha">
+              <mat-icon (click)="exibirSenha();" matSuffix>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+              <mat-error *ngIf="formLogin.get('senha')?.invalid && formLogin.get('senha')?.touched">Senha é
+                <strong>obrigatória</strong>
+              </mat-error>
             </mat-form-field>
           </form>    
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button (click)="login()">entrar</button>
-              <button mat-stroked-button (click)="esqueceuSenha()">esqueceu a senha ?</button>
+            <button mat-raised-button (click)="logar()">entrar</button>
+            <div class="no-login">
+              <span mat-stroked-button (click)="esqueceuSenha()">esqueceu a senha ?</span>
+              <span mat-stroked-button>|</span>
+              <span mat-stroked-button (click)="novoUsuario()">Cadastre-se!</span>
+            </div>
         </mat-card-actions>
       </mat-card>
 

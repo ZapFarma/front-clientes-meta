@@ -1,8 +1,8 @@
 @use './../../../style/tokens.scss' as *;
 
 .front-zapfarma-dashboard {
+    padding-top: 80px;
     width: 100%;
-    padding-left: $space-medium;
     .front-zapfarma-dashboard-container {
         width: 100%;
         position: relative;
@@ -19,5 +19,13 @@
         }
 
 
+    }
+
+    .expandir {
+        width: 25px;
+        vertical-align: sub;
+    }
+    mat-icon {
+        vertical-align: bottom;
     }
 }

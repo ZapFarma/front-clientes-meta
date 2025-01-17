@@ -1,103 +1,302 @@
 @use './../../../style/tokens.scss' as *;
 
+// a {
+//     text-decoration: none;
+//     color: $color-wh;
+//     width: 100%;
+//     justify-content: initial;
+//     display: flex;
+//     align-items: center;
+//     height: 50px;
+//   }
+
+// .container {
+//     height: 100vh;
+//     border: 1px solid rgba(0, 0, 0, 0.5);
+//     button {
+//         cursor: pointer;
+//         background-color: $primary-palette-variant3;
+//         width: 25px;
+//         height: 25px;
+//         padding: 0;
+//     }
+//   }
+
+//   .disabled {
+//     color: #1c2236;
+//   }
+  
+//   .sidenav-content {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//   }
+//   .sidenav {
+//      user-select: none;
+//     .logo {
+//       color: $color-text-02;
+//       display: flex;
+//       position: absolute;
+//       height: 50px;
+//     }
+//   }
+
+//   .full-width {
+//     width: 100%;
+//   }
+
+//   .menu-button {
+//     transition: 300ms ease-in-out;
+//     transform: rotate(0deg);
+//   }
+
+//   .menu-button.rotated {
+//     transform: rotate(180deg);
+//   }
+
+//   .submenu {
+//     overflow-y: hidden;
+//     transition: transform 300ms ease;
+//     transform: scaleY(0);
+//     transform-origin: top;
+//     padding-left: 30px;
+//   }
+
+//   .submenu.expanded {
+//     transform: scaleY(1);
+//   }
+
+//   .area-account {
+//     display: flex;
+//     color: $primary-palette-variant3;
+//     position: relative;
+//     cursor: default;
+//     border-bottom: 1px dashed $primary-palette-variant3;
+//     border-top: 1px dashed $primary-palette-variant3;
+//     .title {
+//         font-size: 12px;
+//         font-weight: 900;
+//     }
+//     .sub-title {
+//         font-size: 10px;
+//         .sair {
+//             cursor: pointer;
+//             color: $color-text-wh;
+//         }
+//     }
+//     p {
+//         margin: 0;
+//         color: $primary-palette-variant5;
+//     }
+//   }
+
+//   ::ng-deep {
+//     .mdc-list-item__primary-text {
+//         display: flex !important;
+//         // color: $color-wh !important;
+//         position: relative;
+//         mat-icon {
+//             padding-right: 8px;
+//         }
+//     }
+
+//     .mat-drawer-inner-container {
+//         overflow: hidden !important;
+//       }
+//   }
+
+//   mat-sidenav {
+//     background-color: $primary-color;
+//     color: $color-wh;
+//     border-top-right-radius: 20px;
+//   }
+//   mat-list-item {
+//     height: 60px !important;
+//   }
+
 a {
-    text-decoration: none;
-    color: $color-wh;
-    width: 100%;
-    justify-content: initial;
+  text-decoration: none;
+}
+.buttons {
+  position: relative;
+  display: flex;
+}
+
+.button {
+  background: none;
+  color: #ffff;
+}
+
+.escola {
+  display: flex;  
+  margin-right: 8px;
+  button {
+    background-color: #f55a2a;
+    height: 40px !important;
+  }
+}
+.margin-top {
+  margin-top: 8px;
+}
+.menu-container {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;  
+    // z-index: -1;
   }
-
-.container {
-    height: 100vh;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    button {
-        cursor: pointer;
-        background-color: $primary-palette-variant3;
-        width: 25px;
-        height: 25px;
-        padding: 0;
-    }
+  
+  .menu-is-mobile .menu-toolbar {
+    position: fixed;
+    z-index: 2;
   }
-  .sidenav-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  
+  .mat-icon-menu {
+    margin: 0px 16px 0px 0;
   }
-  .sidenav {
-     user-select: none;
-    .logo {
-      color: $color-text-bk;
-    }
-  }
-
-  .full-width {
-    width: 100%;
-  }
-
-  .menu-button {
-    transition: 300ms ease-in-out;
-    transform: rotate(0deg);
-  }
-
-  .menu-button.rotated {
-    transform: rotate(180deg);
-  }
-
-  .submenu {
-    overflow-y: hidden;
-    transition: transform 300ms ease;
-    transform: scaleY(0);
-    transform-origin: top;
-    padding-left: 30px;
-  }
-
-  .submenu.expanded {
-    transform: scaleY(1);
-  }
-
-  .area-account {
-    display: flex;
-    color: $primary-palette-variant3;
-    position: relative;
-    cursor: default;
-    border-bottom: 1px dashed $primary-palette-variant3;
-    border-top: 1px dashed $primary-palette-variant3;
-    .title {
-        font-size: 12px;
-        font-weight: 900;
-    }
-    .sub-title {
-        font-size: 10px;
-        .sair {
-            cursor: pointer;
-            color: $color-text-wh;
-        }
-    }
-    p {
-        margin: 0;
-        color: $primary-palette-variant5;
-    }
-  }
-
-  ::ng-deep {
-    .mdc-list-item__primary-text {
-        display: flex !important;
-        color: $color-wh !important;
-        position: relative;
-        mat-icon {
-            padding-right: 8px;
-        }
-    }
-
-    .mat-drawer-inner-container {
-        overflow: hidden !important;
-      }
-  }
-
   mat-sidenav {
+    width: 230px;
+    background-color: #ececec;
+  }
+  .mat-toolbar.mat-primary {
     background-color: $primary-color;
-    color: $color-wh;
-    border-top-right-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 9999999;
+  }
+ 
+  mat-toolbar {
+    height: 80px;
+  }
+  .img {
+    width: 60%;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 500px) {
+    .img-desktop {
+      display: none;
+    }
+    .img-mobile {
+      width: 80px;
+    }
+  }
+
+  @media (min-width: 500px) {
+
+    .img-desktop {
+      width: 100px;
+    }
+    .img-mobile {
+      display: none;
+    }
+
+   }
+
+  .sidepanel  {
+    width: 0;
+    position: fixed;
+    z-index: 5;
+    height: 350px;
+    top: 80px;
+    left: 0;
+    background-color: #031246;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    &__mat-icon-menu {
+        color:white
+    }
+  }
+  
+  .sidepanel a {
+    padding: 8px 8px 24px 24px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    line-height: 25px;
+    
+  }
+  
+  .sidepanel a:hover {
+    color: #358d86;
+  }
+
+  @media (max-width: 640px) {
+    .sidepanel {
+        top: 80px
+    }
+}
+  
+  .sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: 36px;
+  }
+  .item-menu {
+    color: white;
+    font-size: 18px;
+    margin: 24px;
+    vertical-align: bottom;
+
+  }
+  .item-menu:hover {
+    color: #358d86;
+
+  }
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color:#444;
+  }
+  .div-items {
+    width: 300px;
+    transition: 0.5s;
+  }
+  .acessar {
+    border-radius: 5px;
+    height: 40px !important;
+    background-color: $primary-color !important;
+  }
+  .container-iniciais {
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    position: relative;
+    display: flex;
+    background-color: $primary-palette-variant1;
+    padding: 16px;
+    text-align: center;
+    border-radius: 45px;
+    border: 2px solid #fff;
+    span {
+      cursor: pointer;
+      bottom: 11px;
+      font-size: 16px;
+      color: $primary-color;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+  ::ng-deep {
+    .mat-mdc-menu-panel {
+      padding-top: 24px;
+    }
   }

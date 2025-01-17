@@ -1,32 +1,40 @@
 <div class="front-zapfarma-esqueceu-senha">
   <div class="front-zapfarma-esqueceu-senha__image-login">
-    <h1>Zapfarma [IA]</h1>
+    <img class="logo" src="../../../assets/imgs/logo-branca.png">
   </div>
   <div class="front-zapfarma-esqueceu-senha__login">
     <div class="container">
       <mat-card class="example-card" appearance="outlined">
         <mat-card-content>
-          <h1 class="h1-mobile">Zapfarma [IA]</h1>
-          <div class="container__subtitle">
-            <front-zapfarma-header title="Esqueceu sua senha?"></front-zapfarma-header>
-            <p>Digite seu endereço de email.</p>
-            <p>Você receberá um link para criar uma nova senha via email.</p>
+
+          <div *ngIf="!sucesso">
+            <div class="container-logo">          
+              <img class="logo-mobile" src="../../../assets/imgs/zapFarma-color.png">
+            </div>              
+            <div class="container__subtitle">
+              <front-zapfarma-header title="Esqueceu sua senha?"></front-zapfarma-header>
+              <p>Digite seu endereço de email.</p>
+              <p>Você receberá um link para criar uma nova senha via email.</p>
+            </div>
+            <form [formGroup]="formLogin" novalidate>
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput placeholder="Informe seu email">
+              </mat-form-field>
+              <!-- <mat-form-field class="example-full-width">
+                <mat-label>senha</mat-label>
+                <input matInput placeholder="Informe sua senha">
+              </mat-form-field> -->
+
+            </form>
           </div>
-          <form class="example-form">
-            <mat-form-field class="example-full-width">
-              <mat-label>senha</mat-label>
-              <input matInput placeholder="Informe sua senha">
-            </mat-form-field>
-            <!-- <mat-form-field class="example-full-width">
-              <mat-label>senha</mat-label>
-              <input matInput placeholder="Informe sua senha">
-            </mat-form-field> -->
-          
-          </form>    
+          <div *ngIf="sucesso" class="retorno-sucesso">
+            <h2>{{error ? error : 'Email enviado. Um link para alterar a sua senha foi enviado para o seu email!'}}</h2>
+          </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button>Recuperar minha senha</button>
-            <button mat-stroked-button (click)="voltarLogin()">ou faça seu login agora!</button>
+          <button *ngIf="!sucesso" mat-raised-button (click)="recuperarSenha()">Recuperar minha senha</button>
+          <button mat-stroked-button (click)="voltarLogin()">voltar para Login!</button>
         </mat-card-actions>
       </mat-card>
 

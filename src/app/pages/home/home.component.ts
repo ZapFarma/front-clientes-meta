@@ -39,7 +39,14 @@ import { ToolbarComponent } from '../../shared/toolbar/toolbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { PlanosAssinaturasComponent } from 'src/app/shared/planos-assinaturas/planos-assinaturas.component';
 
+import { GetDistanceBetweenCeps } from 'cep-distance'
+// const CepDistance  = inport "cep-distance";
+import { GeoPlacesClient, GetPlaceCommand } from "@aws-sdk/client-geo-places"; // ES Modules import
+
+
+
 register();
+
 
 @Component({
   selector: 'front-zapfarma-home',
@@ -65,33 +72,7 @@ register();
   ],
   providers: [provideNgxMask(), ContatoService, WebHookService, HttpClient],
 })
-export class HomeComponent implements OnInit {
-  formSendData!: FormGroup;
-  isSubmit = false;
-  isValidForm = false;
-  animate0 = false;
-  animate1 = false;
-  animate2 = false;
-  animateBalao1 = false;
-  animateBalao2 = false;
-  animateBalao3 = false;
-  animateBalao4 = false;
-  animateBalao5 = false;
-  animateBalao6 = false;
-  animateBalao7 = false;
-  animateBalao8 = false;
-  animateBalao9 = false;
-  animateBalao10 = false;
-  animateBalao11 = false;
-  animateBalao12 = false;
-  animateBalao13 = false;
-  animateBalaoZapfarma = false;
-  animateBalaoAvatar = false;
-  animateBalaoZapfarma2 = false;
-  animateBalaoZapfarma3 = false;
-
-  animateArray: any = [];
-  @ViewChild('nswiper', { static: false }) swiper?: any;
+export class HomeComponent {
 
   bounce: any;
   constructor(
@@ -101,230 +82,51 @@ export class HomeComponent implements OnInit {
     private deviceService: DeviceDetectorService
   ) {}
 
-  ngOnInit() {
-    const swiperEl = document.querySelector('swiper-container');
-    this.criarForm();
-    swiperEl?.addEventListener('swiper-slidechange', (event: any) => {
-      const index = event.detail[0].activeIndex;
-      this.limparAnimacao();
-      this.validarIndex(index);
-    });
+  buscaCep() {
+  const km = this.calculaCeps(-22.9362311,-43.5780126, -22.9216041,-43.56324)
+  console.log(Number(km  / 1000).toFixed(2))
+}
 
-    //Carrega animação inicial
-    this.Slide0animate0();
-    this.Slide0animate1();
-    this.Slide0animate2();
-  }
+calculaCeps(lat1:number,lon1:number,lat2:number,lon2:number ) {
+    const R = 6371e3;
 
-  clickNext() {
-    this.swiper.nativeElement.swiper.slideNext();
-  }
+    const radLat1 = lat1 * Math.PI / 180;
+    const radLon1 = lon1 * Math.PI / 180;
 
-  clickBack(val: boolean) {
-    this.swiper.nativeElement.swiper.slidePrev();
-  }
+    const radLat2 = lat2 * Math.PI / 180;
+    const radLon2 = lon2 * Math.PI / 180;
 
-  validarIndex(index: any) {
-    switch (index) {
-      case 0:
-        this.Slide0animate0();
-        this.Slide0animate1();
-        this.Slide0animate2();
-        break;
-      case 1:
-        this.Slide1animateBalao();
-        this.Slide1animateBalao2();
-        this.Slide1animateBalao3();
-        break;
-      case 2:
-        this.Slide1animateBalao4();
-        this.Slide1animateBalao5();
-        this.Slide1animateBalao6();
-        break;
-      case 3:
-        this.Slide1animateBalao7();
-        this.Slide1animateBalao8();
-        this.Slide1animateBalao9();
-        break;
-      case 4:
-        this.Slide1animateBalao10();
-        this.Slide1animateBalao11();
-        this.Slide1animateBalao12();
-        this.Slide1animateBalao13();
-        break;
-      case 5:
-        this.Slide1animateAvatar();
-        this.Slide1animateBalao14();
-        this.Slide1animateBalao15();
-        this.Slide1animateBalao16();
-        break;
-      default:
-        break;
-    }
-  }
+    const dLat = radLat2 - radLat1;
+    const dLon = radLon2 - radLon1;
 
-  Slide0animate0() {
-    setTimeout(() => {
-      this.animate0 = true;
-    }, 100);
-  }
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(radLat1) * Math.cos(radLat2) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
 
-  Slide0animate1() {
-    setTimeout(() => {
-      this.animate1 = true;
-    }, 2000);
-  }
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-  Slide0animate2() {
-    setTimeout(() => {
-      this.animate2 = true;
-    }, 3000);
-  }
+    const distance = R * c;
 
-  Slide1animateBalao(): any {
-    this.animateBalao1 = true;
-  }
+    this.places();
 
-  Slide1animateBalao2() {
-    this.animateBalao2 = true;
-  }
+    return distance;
+}
 
-  Slide1animateBalao3() {
-    this.animateBalao3 = true;
-  }
+async places() {
+  const client = new GeoPlacesClient({ region: "sa-east-1" });
+  const input = { // GetPlaceRequest
+      PlaceId: "casa01", // required
+      // AdditionalFeatures: [ // GetPlaceAdditionalFeatureList
+      //   "STRING_VALUE",
+      // ],
+      Language: "en",
+      // PoliticalView: "STRING_VALUE",
+      // IntendedUse: "STRING_VALUE",
+      Key: 'eyJqdGkiOiJlODNjMjg1Ny0wOGM5LTQ3NDMtYjc2NS0xMTc5ZjhiOGRjYjYifRpdjPvRoR-r_7GUqUTAuHTfQCab6IbSnUlJDe2Zjl9iHhkC7s0Dt2REzTBQFhmAzMH1Uj8WmPgwJkjWMBn9GZb_J-krQDiSWdp-s8pYiU4JX44RV_Ppv3tlqTLoWoFHdJIfv_TSxSLeJ27pS6JLMNecOulgeeOsdFfZ_crkUK14386XFc1jKbIC1wmsw_NGsypylUvotBXBfmeqXEPCFyy2QMYhjit66CN8ezr3JI3BgwqoOqiGtMBUjZbK2P742ioFbiWRZVIfFtuXpYCdvcHvEZotK9H_Mb4_53etfK11Um7cqdVToOmCjUEIR2FgvAul2efb8cn9RgVwB6JunNs.ZWU0ZWIzMTktMWRhNi00Mzg0LTllMzYtNzlmMDU3MjRmYTkx',
+    };
 
-  Slide1animateBalao4() {
-    this.animateBalao4 = true;
-  }
-
-  Slide1animateBalao5() {
-    this.animateBalao5 = true;
-  }
-
-  Slide1animateBalao6() {
-    this.animateBalao6 = true;
-  }
-
-  Slide1animateBalao7() {
-    this.animateBalao7 = true;
-  }
-
-  Slide1animateBalao8() {
-    this.animateBalao8 = true;
-  }
-
-  Slide1animateBalao9() {
-    this.animateBalao9 = true;
-  }
-
-  Slide1animateBalao10() {
-    this.animateBalao10 = true;
-  }
-
-  Slide1animateBalao11() {
-    this.animateBalao11 = true;
-  }
-
-  Slide1animateBalao12() {
-    this.animateBalao12 = true;
-  }
-
-  Slide1animateBalao13() {
-    this.animateBalao13 = true;
-  }
-
-  Slide1animateBalao14() {
-    setTimeout(() => {
-      this.animateBalaoZapfarma = true;
-    }, 500);
-  }
-
-  Slide1animateAvatar() {
-    this.animateBalaoAvatar = true;
-  }
-
-  Slide1animateBalao15() {
-    setTimeout(() => {
-      this.animateBalaoZapfarma2 = true;
-      this.animateBalaoZapfarma = false;
-    }, 4000);
-  }
-
-  Slide1animateBalao16() {
-    setTimeout(() => {
-      this.animateBalaoZapfarma2 = false;
-      this.animateBalaoZapfarma3 = true;
-    }, 8000);
-  }
-
-  sendForm() {
-    if (this.formSendData.valid) {
-      this.enviarDados();
-    }
-  }
-
-  enviarDados() {
-    this.isSubmit = true;
-    const dados = this.formSendData.getRawValue() as any;
-    const device = this.deviceService.getDeviceInfo().deviceType;
-    const browser = this.deviceService.getDeviceInfo().browser;
-    dados.date_time = this.tratarData();
-    dados.dispositivo = device ? device : 'Não encontrado';
-    dados.browser = browser ? browser : 'Não encontrado';
-
-    this._contatoService.enviarContato(dados).subscribe((response) => {
-      if (response) {
-        this.isValidForm = true;
-        this.enviarDadosWebhook(dados);
-      }
-    });
-  }
-
-  enviarDadosWebhook(dados: any) {
-    this._webhooService.enviarContatoWebHook(dados).subscribe((response) => {
-      if (response) {
-        this.isSubmit = false;
-        this.isValidForm = true;
-        this.formSendData.reset();
-      }
-    });
-  }
-
-  tratarData() {
-    const date = new Date();
-    date.setHours(date.getHours() - 3);
-    const isodate = date.toISOString();
-    return isodate;
-  }
-
-  criarForm() {
-    this.formSendData = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      nome: ['', [Validators.required, Validators.minLength(5)]],
-      telefone: ['', [Validators.required]],
-    });
-  }
-
-  limparAnimacao() {
-    this.animate0 = false;
-    this.animate1 = false;
-    this.animate2 = false;
-    this.animateBalao1 = false;
-    this.animateBalao2 = false;
-    this.animateBalao3 = false;
-    this.animateBalao4 = false;
-    this.animateBalao5 = false;
-    this.animateBalao6 = false;
-    this.animateBalao7 = false;
-    this.animateBalao8 = false;
-    this.animateBalao9 = false;
-    this.animateBalao10 = false;
-    this.animateBalao11 = false;
-    this.animateBalao12 = false;
-    this.animateBalao13 = false;
-    this.animateBalaoZapfarma = false;
-    this.animateBalaoZapfarma2 = false;
-    this.animateBalaoZapfarma3 = false;
-    this.animateBalaoAvatar = false;
-  }
+    
+    const command = new GetPlaceCommand(input);
+    const response = await client.send(command);
+}
 }

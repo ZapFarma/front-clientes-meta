@@ -1,0 +1,48 @@
+@use './../../../style/tokens.scss' as *;
+
+.front-zapfarma-dashboard {
+    width: 100%;
+    padding-top: 80px;
+    .front-zapfarma-dashboard-container {
+        width: 100%;
+        position: relative;
+        display: flex;
+        gap: $space-small;;
+        &__dash {
+            width: 100%;
+            mat-card {
+                border-radius: $space-medium;
+                border: 0;
+                height: 90vh;        
+                box-shadow: 0px 0px 4px #e1e1e1;
+            }
+        }
+
+
+    }
+.link-editar {
+    cursor: pointer;
+}
+table {
+    width: 850px;
+}
+.mat-container {
+    // height: 400px;
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+}
+
+.action-top {
+    display: flex;
+    justify-content: space-between;
+    mat-icon {
+        vertical-align: middle;
+    }
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+}

@@ -1,11 +1,15 @@
-<front-zapfarma-menu>
+<front-zapfarma-menu></front-zapfarma-menu>
   <div class="front-zapfarma-dashboard">
-    <front-zapfarma-header title="Dashboard"></front-zapfarma-header>
+    <front-zapfarma-header title=" "></front-zapfarma-header>
     <div class="front-zapfarma-dashboard-container">
       <div class="front-zapfarma-dashboard-container__dash">
         <mat-card class="example-card" appearance="outlined">
           <mat-card-content>
-            <h3 class="h1-mobile">Contatos</h3>
+            <h3 class="h1-mobile">Olá, {{usuario ? usuario?.nome : ''}}!</h3>
+            <p>Que bom que você esta conosco! A <strong>Equipe Zapfarma</strong> esta feliz com esta parceria de sucesso</p>
+            <p>- Clique no botão <mat-icon>menu</mat-icon> para exibir o menu de acesso!</p>
+            <h4>Avisos</h4>
+            <p>⚠️ Prezado afiliado, não esqueça de cadastrar todos os dados do cliente. Estas informações servem para atualizar a nossa base de dados, melhorando a comunicação entre o cliente final e a farmácia.</p>
           </mat-card-content>
           <!-- <mat-card-actions>
               <button mat-raised-button>Cadastrar</button>
@@ -15,5 +19,4 @@
       </div>
     </div>
   </div>
-</front-zapfarma-menu>
 
