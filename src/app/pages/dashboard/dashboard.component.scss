@@ -28,4 +28,10 @@
     mat-icon {
         vertical-align: bottom;
     }
+    a {
+        text-decoration: none;
+        color: $primary-color;
+        font-weight: 600;
+        text-decoration: underline;
+    }
 }
