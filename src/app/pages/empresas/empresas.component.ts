@@ -68,10 +68,10 @@ export class EmpresasComponent {
   @ViewChild('tableScroll') matElements: ElementRef<HTMLTableElement> =
     {} as ElementRef;
   displayedColumns: string[] = [
-    'cpfCnpj',
     'nomeFantasia',
+    'afiliados',
     'whatsApp',
-    'plano',
+    'nomePlanos',
     'cep',
     'data',
   ];
@@ -132,7 +132,8 @@ export class EmpresasComponent {
         this.svc = svc ? svc?.farmacias : [];
         this.svc.forEach((e: any, i: number) => {
           // this.svc[i].aprovado = e.aprovado === true ? 'Sim': 'Não';
-          // this.svc[i].data = this.dataConvertida(e.data);
+          this.svc[i].nomeAfiliados = e.afiliados.nome;
+          this.svc[i].nomePlanos = e.planos.nome;
         });
         this.dataSource = new MatTableDataSource(this.svc ? this.svc : []);
         this.dataSource.paginator = this.paginator;

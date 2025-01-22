@@ -27,17 +27,16 @@
             
                       
                       <!-- Column -->
-                      <ng-container matColumnDef="cpfCnpj">
-                        <th class="th-name" mat-header-cell *matHeaderCellDef mat-sort-header> CNPJ
-                        </th>
-                        <td class="th-name" mat-cell *matCellDef="let row" [ngStyle]="{color: row.ativo === true ? '' :'#ccc' }"> <a class="link-editar" (click)="irAtualizar(row.id)"><u>{{row.cpfCnpj | mask: '00.000.000/0000-00'}}</u> ✏️</a> </td>
-                      </ng-container>
-            
-                      <!-- Column -->
                       <ng-container matColumnDef="nomeFantasia">
                         <th class="th-name" mat-header-cell *matHeaderCellDef mat-sort-header> Nome Fantasia
                         </th>
-                        <td class="th-name" mat-cell *matCellDef="let row" [ngStyle]="{color: row.ativo === true ? '' :'#ccc' }"> <a class="link-editar" (click)="irAtualizar(row._id)">{{row.nomeFantasia}}</a> </td>
+                        <td class="th-name" mat-cell *matCellDef="let row" [ngStyle]="{color: row.ativo === true ? '' :'#ccc' }"> <a class="link-editar" (click)="irAtualizar(row.id)">✏️ <u>{{row.nomeFantasia}}</u></a> </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="afiliados">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Afiliados
+                        </th>
+                        <td mat-cell *matCellDef="let row" [ngStyle]="{color: row.ativo === true ? '' :'#ccc' }">{{row.nomeAfiliados}} </td>
                       </ng-container>
             
                       <ng-container matColumnDef="whatsApp">
@@ -46,10 +45,10 @@
                         <td mat-cell *matCellDef="let row" [ngStyle]="{color: row.ativo === true ? '' :'#ccc' }"> {{row.whatsApp | mask: '(00) 00000-0000'}} </td>
                       </ng-container>
             
-                      <ng-container matColumnDef="plano">
+                      <ng-container matColumnDef="nomePlanos">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Plano
                         </th>
-                        <td mat-cell *matCellDef="let row" [ngStyle]="{color: row.ativo === true ? '' :'#ccc' }"> {{row.plano}} </td>
+                        <td mat-cell *matCellDef="let row" [ngStyle]="{color: row.ativo === true ? '' :'#ccc' }"> {{row.nomePlanos}} </td>
                       </ng-container>
                       
                       <!-- Column -->
