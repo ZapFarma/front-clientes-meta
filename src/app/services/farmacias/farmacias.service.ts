@@ -62,6 +62,19 @@ export class FarmaciasService {
       );
     }
 
+
+        /**
+   * Consultando Servicos na Servidor, retornando JSON Ge
+   * @author Paulo Eduardo
+   */
+        consultarFarmaciasPorCnpj(cpfCnpj:any) {
+          return this._httpClient.get(
+            `${environment.apiProd}/hotmart_farmacias/cpfCnpj/${cpfCnpj}`,
+            httpOptions
+          );
+        }
+    
+
   
 
     /**

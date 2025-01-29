@@ -17,6 +17,7 @@ import { UsuarioNaoAutenticadoGuard } from './services/guards/usuario-nao-autent
 import { UsuarioAutenticadoGuard } from './services/guards/usuario-autenticado.gard';
 import { EditarEmpresasComponent } from './pages/empresas/editar/editar-empresas.component';
 import { AlterarSenhaComponent } from './pages/alterar-senha/alterar-senha.component';
+import { TreinamentosComponent } from './pages/treinamentos/treinamentos.component';
 
 export const appRoutes: Route[] = [
     { path: '', component: HomeComponent },
@@ -36,5 +37,6 @@ export const appRoutes: Route[] = [
     { path: 'cadastro-afiliados', component: CadastroAfiliadosComponent, canActivate: [UsuarioAutenticadoGuard] },
     { path: 'novo-usuario', component: NovoUsuarioComponent, canActivate: [UsuarioNaoAutenticadoGuard] },
     { path: 'usuarios-afiliados', component: UsuariosComponent, canActivate: [UsuarioAutenticadoGuard] },
+    { path: 'treinamentos', component: TreinamentosComponent, canActivate: [UsuarioAutenticadoGuard] },
     
 ];

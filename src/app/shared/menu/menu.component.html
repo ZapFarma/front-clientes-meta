@@ -122,9 +122,10 @@
   <div #divElements class="div-items" style="display: table;">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
   <a class="sidepanel__item-menu" (click)="closeNav()" mat-list-item href="#/dashboard"><mat-icon class="sidepanel__mat-icon-menu">dashboard</mat-icon><span class="item-menu">Dashboard</span></a>
+  <a class="sidepanel__item-menu" (click)="closeNav()" mat-list-item href="#/treinamentos"><mat-icon class="sidepanel__mat-icon-menu">play_circle</mat-icon><span class="item-menu">Treinamentos</span></a>
   <a class="sidepanel__item-menu" (click)="closeNav()" mat-list-item href="#/empresas"><mat-icon class="sidepanel__mat-icon-menu">medical_services</mat-icon><span class="item-menu">Farmácias</span></a>
   <a *ngIf="admin || admin_sys" class="sidepanel__item-menu" (click)="closeNav()" mat-list-item href="#/usuarios-afiliados"><mat-icon class="sidepanel__mat-icon-menu">badge</mat-icon><span class="item-menu">Afiliados</span></a>
-  <a class="sidepanel__item-menu" (click)="onLogOut()" mat-list-item href="#/usuarios-afiliados"><mat-icon class="sidepanel__mat-icon-menu">logout</mat-icon><span class="item-menu">Sair</span></a>
+  <a class="sidepanel__item-menu" (click)="onLogOut()" mat-list-item><mat-icon class="sidepanel__mat-icon-menu">logout</mat-icon><span class="item-menu">Sair</span></a>
   </div>
   
 </div>

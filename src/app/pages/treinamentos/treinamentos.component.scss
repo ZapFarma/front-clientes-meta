@@ -1,0 +1,55 @@
+@use './../../../style/tokens.scss' as *;
+
+.front-zapfarma-treinamentos {
+    padding-top: 80px;
+    width: 100%;
+    .front-zapfarma-treinamentos-container {
+        width: 100%;
+        position: relative;
+        display: flex;
+        gap: $space-small;;
+        &__dash {
+            width: 100%;
+            mat-card {
+                border-radius: $space-medium;
+                border: 0;
+                height: 90vh;        
+                box-shadow: 0px 0px 4px #e1e1e1;
+            }
+
+            .flex-videos-cotainer {
+                display: flex;
+                flex-direction: row;
+                text-align: center;
+
+                .videos {
+                    padding: 10px;
+                    flex: 50%;
+                }
+            }
+        }
+
+        @media (max-width: 800px) {
+            .flex-videos-cotainer {
+              flex-direction: column;
+            }
+          }
+
+
+
+    }
+
+    .expandir {
+        width: 25px;
+        vertical-align: sub;
+    }
+    mat-icon {
+        vertical-align: bottom;
+    }
+    a {
+        text-decoration: none;
+        color: $primary-color;
+        font-weight: 600;
+        text-decoration: underline;
+    }
+}

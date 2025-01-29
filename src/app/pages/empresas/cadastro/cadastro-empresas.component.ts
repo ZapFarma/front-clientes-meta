@@ -32,9 +32,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
-import { validate } from 'gerador-validador-cpf';
+// import { validate } from 'gerador-validador-cpf';
 import { MatSelect } from '@angular/material/select';
 import { catchError, of } from 'rxjs';
+import { validate, format, generate } from 'cnpj';
 
 export interface CEP {
   cidade: string;
@@ -180,23 +181,24 @@ export class CadastroEmpresasComponent {
   }
 
   validateDvCpf(): void {
-    const cpfInformado = this.formLogin.controls['cpf'].value;
-    const v = validate(cpfInformado);
-    if (!v && cpfInformado != null) {
+    const cpfCnpj = this.formLogin.controls['cpfCnpj'].value;
+    const formatted = format(cpfCnpj)
+    const v = validate(formatted);
+    if (!v && cpfCnpj != null) {
       this.openDialogCpfDV();
-      this.formLogin.controls['cpf'].reset();
-      document.getElementById('cpf')?.focus();
+      this.formLogin.controls['cpfCnpj'].reset();
+      document.getElementById('cpfCnpj')?.focus();
     }
   }
 
   validarCPfUsuario() {
-    const cpfInformado = this.formLogin.controls['cpf'].value;
-    this._UsuariosService.consultaCpfUsuario(cpfInformado).subscribe((ret) => {
+    const cpfCnpj = this.formLogin.controls['cpfCnpj'].value;
+    this._farmaciasService.consultarFarmaciasPorCnpj(cpfCnpj).subscribe((ret) => {
       if (Object.keys(ret).length > 0) {
         this.validCpf = false;
         this.openDialogCPF();
-        this.formLogin.controls['cpf'].reset();
-        document.getElementById('cpf')?.focus();
+        this.formLogin.controls['cpfCnpj'].reset();
+        document.getElementById('cpfCnpj')?.focus();
       } else {
         this.validCpf = true;
       }
@@ -204,11 +206,11 @@ export class CadastroEmpresasComponent {
   }
 
   openDialogCpfDV() {
-    alert('CPF incorreto!');
+    alert('CNPJ incorreto!');
   }
 
   openDialogCPF() {
-    alert('Este CPF já foi cadastrado');
+    alert('Este CNPJ já foi cadastrado');
   }
 
   cadastrar() {
