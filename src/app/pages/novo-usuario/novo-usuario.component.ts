@@ -21,15 +21,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { validate } from 'gerador-validador-cpf';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { catchError, of } from 'rxjs';
+import { CepsService } from 'src/app/services/ceps/ceps.service';
 
 export interface CEP {
   cidade: string;
   uf: string;
   logradouro?: string;
+  tipo_logradouro?: string;
   bairro: string;
-  estado?: string;
 }
-
 @Component({
   selector: 'front-zapfarma-novo-usuario',
   templateUrl: './novo-usuario.component.html',
@@ -49,7 +49,7 @@ export interface CEP {
     NgxMaskDirective,
     NgxMaskPipe,
   ],
-  providers: [provideNgxMask(), UsuariosService, HttpClient],
+  providers: [provideNgxMask(), CepsService, UsuariosService, HttpClient],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
@@ -65,14 +65,16 @@ export class NovoUsuarioComponent {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private _UsuariosService: UsuariosService
+    private _UsuariosService: UsuariosService,
+    private _cepsService: CepsService
+    
   ) {
     this.criarForm();
     this.cep = {
       cidade: '',
       bairro: '',
       uf: '',
-      estado: '',
+      tipo_logradouro: '',
       logradouro: '',
     };
   }
@@ -214,8 +216,9 @@ export class NovoUsuarioComponent {
   consutarEndereco() {
     const cep = this.formLogin.value['cep'];
     if (cep) {
-      this._UsuariosService.consultarCep(cep).subscribe((ret: any) => {
-        this.cep = ret;
+      this._cepsService.consultarCep(cep).subscribe((response: any) => {
+        this.cep = response.result[0];
+        this.cep.logradouro = response.result[0].tipo_logradouro + ' ' +  response.result[0].logradouro
       });
     } else {
       // this.invalidCampos = true

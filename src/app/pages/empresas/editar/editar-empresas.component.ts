@@ -29,15 +29,17 @@ import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 import { validate } from 'gerador-validador-cpf';
 import { MatSelect } from '@angular/material/select';
 import { catchError, of, retry } from 'rxjs';
+import { CepsService } from 'src/app/services/ceps/ceps.service';
 
 
 export interface CEP {
   cidade: string;
   uf: string;
   logradouro?: string;
+  tipo_logradouro?: string;
   bairro: string;
-  estado?: string;
 }
+
 
 
 @Component({
@@ -68,7 +70,7 @@ export interface CEP {
     MatOptionModule
 
   ],
-  providers: [FarmaciasService, provideNgxMask(),],
+  providers: [FarmaciasService, CepsService, provideNgxMask(),],
   
 })
 export class EditarEmpresasComponent {
@@ -89,6 +91,7 @@ export class EditarEmpresasComponent {
       private _farmaciasService: FarmaciasService,
       private _UsuariosService: UsuariosService,
       private routerActivate: ActivatedRoute,
+      private _cepsService: CepsService
 
   
     ) { 
@@ -98,7 +101,7 @@ export class EditarEmpresasComponent {
         cidade:'',
         bairro: '',
         uf: '',
-        estado: '',
+        tipo_logradouro: '',
         logradouro: ''
       }
 
@@ -208,16 +211,13 @@ export class EditarEmpresasComponent {
     }
   
     consutarEndereco() {
-      const cep = this.formLogin.value['cep']
+      const cep = this.formLogin.value['cep'];
       if (cep) {
-        this._UsuariosService.consultarCep(cep)
-        .subscribe((ret:any) =>
-          { 
-         this.cep = ret
-          }
-          );
-      }
-      else {
+        this._cepsService.consultarCep(cep).subscribe((response: any) => {
+          this.cep = response.result[0];
+          this.cep.logradouro = response.result[0].tipo_logradouro + ' ' +  response.result[0].logradouro
+        });
+      } else {
         // this.invalidCampos = true
       }
     }
