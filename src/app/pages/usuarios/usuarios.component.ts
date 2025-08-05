@@ -104,9 +104,6 @@ export class UsuariosComponent {
     console.log('cadastrar');
   }
 
-  irAtualizar(id: any) {
-    console.log('cadastrar');
-  }
 
   getFarmacias(): void {
     this.loadSkeleton = true;
@@ -176,4 +173,9 @@ export class UsuariosComponent {
       500
     );
   }
+
+  irAtualizar(id: any, nome: string) {
+    this.router.navigate(['/empresas'], { queryParams: { id: id, nome: nome } })
+  }
+
 }

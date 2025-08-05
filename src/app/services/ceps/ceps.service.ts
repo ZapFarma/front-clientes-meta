@@ -25,4 +25,11 @@ export class CepsService {
       httpOptions
     );
   }
+
+  consultarFamraciasAfiliadas() {
+    return this._httpClient.get(
+      `${environment.apiProd}/farmacias_afiliadas`,
+      httpOptions
+    );
+  }
 }

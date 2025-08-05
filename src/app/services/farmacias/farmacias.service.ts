@@ -50,6 +50,18 @@ export class FarmaciasService {
     );
   }
 
+     /**
+   * Consultando Servicos na Servidor, retornando JSON Ge
+   * @author Paulo Eduardo
+   */
+     consultarFarmaciasAfiliadosCPF(id:string) {
+      return this._httpClient.get(
+        `${environment.apiProd}/hotmart_farmacias/afiliados/${id}`,
+        httpOptions
+      );
+    }
+  
+
 
     /**
    * Consultando Servicos na Servidor, retornando JSON Ge

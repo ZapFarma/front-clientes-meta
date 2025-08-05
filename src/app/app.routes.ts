@@ -18,6 +18,7 @@ import { UsuarioAutenticadoGuard } from './services/guards/usuario-autenticado.g
 import { EditarEmpresasComponent } from './pages/empresas/editar/editar-empresas.component';
 import { AlterarSenhaComponent } from './pages/alterar-senha/alterar-senha.component';
 import { TreinamentosComponent } from './pages/treinamentos/treinamentos.component';
+import { MapsComponent } from './pages/maps/maps.component';
 
 export const appRoutes: Route[] = [
     { path: '', component: HomeComponent },
@@ -38,5 +39,6 @@ export const appRoutes: Route[] = [
     { path: 'novo-usuario', component: NovoUsuarioComponent, canActivate: [UsuarioNaoAutenticadoGuard] },
     { path: 'usuarios-afiliados', component: UsuariosComponent, canActivate: [UsuarioAutenticadoGuard] },
     { path: 'treinamentos', component: TreinamentosComponent, canActivate: [UsuarioAutenticadoGuard] },
+    { path: 'maps', component: MapsComponent, canActivate: [UsuarioAutenticadoGuard] },
     
 ];

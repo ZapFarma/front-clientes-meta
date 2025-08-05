@@ -77,6 +77,7 @@ export class EmpresasComponent {
   ];
   dataSource: MatTableDataSource<UserData>;
   dadosNotificacao = '';
+  dadosNotificacaoNome = '';
   name = '';
   usuario:any;
   loadSkeleton = false;
@@ -96,10 +97,13 @@ export class EmpresasComponent {
     private activatedRoute: ActivatedRoute,
     private _usuariosService: UsuariosService,
     
+    
   ) {
     this.activatedRoute.queryParams.subscribe((params) => {
-      const cpf = params['cpf'];
-      this.dadosNotificacao = cpf;
+      const id = params['id'];
+      const nome = params['nome'];
+      this.dadosNotificacao = id;
+      this.dadosNotificacaoNome = nome;
     });
     this.usuario = this._usuariosService.obterUsuarioLogado;
     this.getFarmacias();
@@ -115,25 +119,42 @@ export class EmpresasComponent {
 
   getFarmacias(): void {
     this.loadSkeleton = true;
-    if(!this.usuario.admin) {
-      this._farmaciasService.consultarFarmaciasAfiliados().subscribe((svc:any) => {
+    if(!this.dadosNotificacao) {
+      if(!this.usuario.admin) {
+        this._farmaciasService.consultarFarmaciasAfiliados().subscribe((svc:any) => {
+          this.svc = svc ? svc : [];
+          this.svc.forEach((e: any, i: number) => {
+            // this.svc[i].aprovado = e.aprovado === true ? 'Sim': 'Não';
+            // this.svc[i].data = this.dataConvertida(e.data);
+          });
+          this.dataSource = new MatTableDataSource(this.svc ? this.svc : []);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          this.loadSkeleton = false;
+        });
+      } else {
+        this._farmaciasService.consultarFarmacias().subscribe((svc:any) => {
+          this.svc = svc ? svc?.farmacias : [];
+          this.svc.forEach((e: any, i: number) => {
+            // this.svc[i].aprovado = e.aprovado === true ? 'Sim': 'Não';
+            this.svc[i].nomeAfiliados = e.afiliados.nome;
+            this.svc[i].nomePlanos = e.planos.nome;
+          });
+          this.dataSource = new MatTableDataSource(this.svc ? this.svc : []);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          this.loadSkeleton = false;
+        });
+      }
+    } else {
+      this._farmaciasService.consultarFarmaciasAfiliadosCPF(this.dadosNotificacao).subscribe((svc:any) => {
+        this.svc = svc ? svc?.farmacias : [];
         this.svc = svc ? svc : [];
         this.svc.forEach((e: any, i: number) => {
           // this.svc[i].aprovado = e.aprovado === true ? 'Sim': 'Não';
           // this.svc[i].data = this.dataConvertida(e.data);
-        });
-        this.dataSource = new MatTableDataSource(this.svc ? this.svc : []);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-        this.loadSkeleton = false;
-      });
-    } else {
-      this._farmaciasService.consultarFarmacias().subscribe((svc:any) => {
-        this.svc = svc ? svc?.farmacias : [];
-        this.svc.forEach((e: any, i: number) => {
-          // this.svc[i].aprovado = e.aprovado === true ? 'Sim': 'Não';
-          this.svc[i].nomeAfiliados = e.afiliados.nome;
-          this.svc[i].nomePlanos = e.planos.nome;
+          this.svc[i].nomeAfiliados = this.dadosNotificacaoNome;
+          
         });
         this.dataSource = new MatTableDataSource(this.svc ? this.svc : []);
         this.dataSource.paginator = this.paginator;

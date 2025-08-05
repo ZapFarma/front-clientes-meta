@@ -83,8 +83,8 @@
 <div class="menu-container">
   <mat-toolbar color="primary" class="menu-toolbar">
     <button class="button" *ngIf="onMenu"  mat-icon-button (click)="openNav()"><mat-icon>menu</mat-icon></button>
-    <img class="img-desktop" src="assets/imgs/logo-branca.png" (click)="goHome();">
-    <img class="img-mobile" src="assets/imgs/logo-branca.png" (click)="goHome();">
+    <img class="img-desktop" src="assets/imgs/Logo-zap-branca.png" (click)="goHome();">
+    <img class="img-mobile" src="assets/imgs/Logo-zap-branca.png" (click)="goHome();">
     <div class="buttons">
       <button  *ngIf="iniciaisLogado ===''" class="acessar" mat-raised-button color="primary">
         <mat-icon>account_circle</mat-icon>
@@ -125,6 +125,7 @@
   <a class="sidepanel__item-menu" (click)="closeNav()" mat-list-item href="#/treinamentos"><mat-icon class="sidepanel__mat-icon-menu">play_circle</mat-icon><span class="item-menu">Treinamentos</span></a>
   <a class="sidepanel__item-menu" (click)="closeNav()" mat-list-item href="#/empresas"><mat-icon class="sidepanel__mat-icon-menu">medical_services</mat-icon><span class="item-menu">Farmácias</span></a>
   <a *ngIf="admin || admin_sys" class="sidepanel__item-menu" (click)="closeNav()" mat-list-item href="#/usuarios-afiliados"><mat-icon class="sidepanel__mat-icon-menu">badge</mat-icon><span class="item-menu">Afiliados</span></a>
+  <a *ngIf="admin || admin_sys" class="sidepanel__item-menu" (click)="closeNav()" mat-list-item href="#/maps"><mat-icon class="sidepanel__mat-icon-menu">maps</mat-icon><span class="item-menu">Mapa</span></a>
   <a class="sidepanel__item-menu" (click)="onLogOut()" mat-list-item><mat-icon class="sidepanel__mat-icon-menu">logout</mat-icon><span class="item-menu">Sair</span></a>
   </div>
   

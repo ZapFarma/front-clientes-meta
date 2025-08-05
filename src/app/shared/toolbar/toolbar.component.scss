@@ -21,11 +21,12 @@ a {
     display: flex;
     justify-content: space-between;
     z-index: 9999;
+    height: 80px !important;
     .logo {
         color: $color-text-bk;
         margin: $space-small 0 0 0;
         img {
-            width: 80px;
+            width: 110px;
         }
     }
     mat-icon {
