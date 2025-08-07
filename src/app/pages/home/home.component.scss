@@ -467,8 +467,11 @@ a {
                 font-size: $font-size-s-medium;
             }
 
+            .invalid {
+                    border: 1px solid red !important;
+            }
+
             .input {
-                background-color: #517084ba;
                 border-radius: 20px;
                 height: auto;
                 margin-top: 4px;
@@ -488,7 +491,7 @@ a {
                     display: flex;
                     width: 90%;
                     margin-bottom: $space-large;
-                    background: transparent;
+                    background: rgba(81, 112, 132, 0.7294117647);
                     border: 0;
                     color: #ffffff;
                     font-size: $font-size-large;

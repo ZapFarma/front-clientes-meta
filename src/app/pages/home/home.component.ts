@@ -87,6 +87,11 @@ export class HomeComponent implements OnInit {
       ]),
       enderecoFarmacia: new FormControl('', Validators.required),
     });
+    this.calcForm = new FormGroup({
+      pedidos: new FormControl('', Validators.required),
+      vendas: new FormControl('', Validators.required),
+      ticket: new FormControl('', Validators.required),
+    });
   }
 
   onTicketInput(event: any) {
