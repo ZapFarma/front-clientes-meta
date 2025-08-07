@@ -470,7 +470,7 @@ a {
             .input {
                 background-color: #517084ba;
                 border-radius: 20px;
-                height: 48px;
+                height: auto;
                 margin-top: 4px;
                 position: relative;
                 display: block;
@@ -481,6 +481,17 @@ a {
                     position: relative;
                     justify-content: flex-start;
                     padding: 10px 16px;
+                }
+                 input  {
+                    height: $space-medium;
+                    border-radius: 16px;
+                    display: flex;
+                    width: 90%;
+                    margin-bottom: $space-large;
+                    background: transparent;
+                    border: 0;
+                    color: #ffffff;
+                    font-size: $font-size-large;
                 }
             }
 
@@ -503,12 +514,13 @@ a {
                 cursor: pointer;
                 text-align: center;
                 margin: $space-large 0px $space-small 0px;
+                
             }
 
             &__botao:hover {
                 background: #2121214d;
                 /* muda a cor de fundo ao passar o mouse */
-                color: #ffffff;
+                color: transparent;
                 /* mantém a cor do texto branca */
             }
 
@@ -569,6 +581,13 @@ a {
                 text-align: center;
                 margin: $space-large 0px $space-small 0px;
                 box-shadow: 0 0 16px rgb(84 237 35 / 35%);
+                button {
+                    color: $primary-palette-variant1;                                
+                    border: none;
+                    background: transparent;
+                    text-align: center;
+                    
+                }
             }
         }
     }
@@ -2098,7 +2117,7 @@ a {
                     justify-content: flex-start;
                     padding: 10px 16px;
                 }
-                input {
+               input  {
                     height: $space-medium;
                     border-radius: 16px;
                     display: flex;
@@ -2373,6 +2392,7 @@ a {
         }
 
         &__container_04 {
+
             padding: 50px 0 0 0;
 
             &__topo {

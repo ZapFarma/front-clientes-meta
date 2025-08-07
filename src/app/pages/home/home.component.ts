@@ -15,6 +15,7 @@ import {
   FormGroup,
   ReactiveFormsModule,
   Validators,
+  FormBuilder,
 } from '@angular/forms';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ContatoService } from '../../services/contatos/contatos.service';
@@ -58,6 +59,23 @@ export class HomeComponent implements OnInit {
   formulario!: FormGroup;
 
   bounce: any;
+  calcForm: FormGroup;
+
+  conversaoAtual: number | null = null;
+  faturamentoAtual: number | null = null;
+  conversaoZapfarma: number | null = null;
+  faturamentoZapfarma: number | null = null;
+  crescimento: number | null = null;
+  mostraResultado = false;
+
+  constructor(private fb: FormBuilder) {
+    this.calcForm = this.fb.group({
+      pedidos: [''],
+      vendas: [''],
+      ticket: ['']
+    });
+  }
+
   ngOnInit(): void {
     this.formulario = new FormGroup({
       nomeFarmacia: new FormControl('', Validators.required),
@@ -69,6 +87,56 @@ export class HomeComponent implements OnInit {
       ]),
       enderecoFarmacia: new FormControl('', Validators.required),
     });
+  }
+
+  onTicketInput(event: any) {
+    // Formata o valor para moeda brasileira em tempo real
+    let value = event.target.value.replace(/\D/g, '');
+    value = (parseInt(value, 10) / 100).toFixed(2);
+    // Substitui ponto por vírgula para exibir como moeda brasileira
+    value = value.replace('.', ',');
+    // Adiciona separador de milhar
+    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    event.target.value = value;
+    this.calcForm.get('ticket')?.setValue(event.target.value, { emitEvent: false });
+    // Não chama calcular aqui!
+  }
+
+  calcular() {
+    const pedidos = Number(this.calcForm.value.pedidos);
+    const vendas = Number(this.calcForm.value.vendas);
+
+    // Converte ticket para número (R$ 1.234,56 -> 1234.56)
+    let ticketStr = this.calcForm.value.ticket || '';
+    ticketStr = ticketStr.replace(/\./g, '').replace(',', '.');
+    const ticket = Number(ticketStr);
+
+    if (!pedidos || !vendas || !ticket) {
+      this.conversaoAtual = null;
+      this.faturamentoAtual = null;
+      this.conversaoZapfarma = null;
+      this.faturamentoZapfarma = null;
+      this.crescimento = null;
+      this.mostraResultado = true;
+      return;
+    }
+
+    // D: Conversão atual dos pedidos
+    this.conversaoAtual = pedidos > 0 ? (vendas / pedidos) * 100 : 0;
+
+    // E: Faturamento atual no whatsapp
+    this.faturamentoAtual = vendas * ticket;
+
+    // F: Conversão com Zapfarma
+    this.conversaoZapfarma = this.conversaoAtual + 15;
+
+    // G: Faturamento com Zapfarma no whatsapp
+    this.faturamentoZapfarma = pedidos * (this.conversaoZapfarma / 100) * ticket;
+
+    // H: Crescimento no faturamento
+    this.crescimento = this.faturamentoZapfarma - this.faturamentoAtual;
+
+    this.mostraResultado = true;
   }
 
   enviarFormulario(): void {
@@ -88,4 +156,3 @@ export class HomeComponent implements OnInit {
     }
   }
 }
-

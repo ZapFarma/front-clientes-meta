@@ -114,64 +114,76 @@
             </div> -->
         </div>
     </section>
+    
     <section class="front-zapfarma-home__container_04" id="front-zapfarma-home__container_04">
-        <div class="front-zapfarma-home__container_04__topo">
-            <h2>Tecnologia que gera resultados reais</h2>
-            <p>Sabemos que o cliente faz várias cotações ao mesmo tempo, então quem responde mais <span
-                    class="destaque">rápido</span> e <span class="destaque">melhor</span> vende mais</p>
-        </div>
-        <div class="front-zapfarma-home__container_04__camada">
-            <div class="front-zapfarma-home__container_04__titulo">
-                <h2>Calculadora de desempenho</h2>
-                <span>Quanto investe em tráfego pago</span>
-                <div class="input">
-                    <span>R$ 1.500,00</span>
-                </div>
-                <span>Quantos pedidos chegam pelo whatsapp no mês</span>
-                <div class="input">
-                    <span>7500</span>
-                </div>
-                <span>Quantas vendas são fechadas pelo whatsapp no mês?</span>
-                <div class="input">
-                    <span>1875</span>
-                </div>
-                <span>Qual o ticket médio das vendas pelo whatsapp</span>
-                <div class="input">
-                    <span>R$ 48,00</span>
-                </div>
-                <p class="disclaimer">Cálculo baseado em dados de crescimento médio das vendas em 15 pontos percentuais
-                    sobre a conversão atual da farmácia.</p>
-
+      <div class="front-zapfarma-home__container_04__topo">
+        <h2>Tecnologia que gera resultados reais</h2>
+        <p>
+          Sabemos que o cliente faz várias cotações ao mesmo tempo, então quem responde mais
+          <span class="destaque">rápido</span> e <span class="destaque">melhor</span> vende mais
+        </p>
+      </div>
+      <div class="front-zapfarma-home__container_04__camada">
+        <div class="front-zapfarma-home__container_04__titulo">
+          <form [formGroup]="calcForm">
+            <h2>Calculadora de desempenho</h2>
+            <span>Quantos pedidos chegam pelo whatsapp no mês</span>
+            <div class="input">
+              <input type="text" formControlName="pedidos" mask="separator.2" thousandSeparator="." decimalMarker="," placeholder="400" />
             </div>
-            <div class="front-zapfarma-home__container_04__resultado">
-                <h2>Resultado</h2>
-                <div class="front-zapfarma-home__container_04__resultado__tabela">
-                    <div class="line">
-                        <span>Conversão atual dos pedidos</span>
-                        <span class="value">25%</span>
-                    </div>
-                    <div class="line">
-                        <span>Faturamento atual no whatsapp</span>
-                        <span class="value">R$ 90.000,00</span>
-                    </div>
-                    <div class="line">
-                        <span>Conversão com Zapfarma</span>
-                        <span class="value">40%</span>
-                    </div>
-                    <div class="line">
-                        <span>Faturamento com Zapfarma no whatsapp</span>
-                        <span class="value">R$ 144.000,00</span>
-                    </div>
-                    <div class="line">
-                        <span>Crescimento no faturamento </span>
-                        <span class="value">R$ 54.000,00</span>
-                    </div>
-                </div>
-                <div class="front-zapfarma-home__container_04__resultado__botao">
-                    <a href="#front-zapfarma-home__container_10"><p>Quero esses resultados</p></a>
-                </div>
+            <span>Quantas vendas são fechadas pelo whatsapp no mês?</span>
+            <div class="input">
+              <input type="text" formControlName="vendas" mask="separator.2" thousandSeparator="." decimalMarker="," placeholder="100" />
             </div>
+            <span>Qual o ticket médio das vendas pelo whatsapp</span>
+            <div class="input">
+              <input type="text" formControlName="ticket" placeholder="R$ 200,00" (input)="onTicketInput($event)" />
+            </div>
+          </form>
+           <div class="front-zapfarma-home__container_04__resultado__botao">
+            <button type="button" (click)="calcular()">Quero esses resultados</button>
+          </div>
+          <p class="disclaimer">
+            Cálculo baseado em dados de crescimento médio das vendas em 15 pontos percentuais sobre a conversão atual da farmácia.
+          </p>
         </div>
+        <div class="front-zapfarma-home__container_04__resultado">
+          <h2>Resultado</h2>
+          <div class="front-zapfarma-home__container_04__resultado__tabela" >
+            <div class="line">
+              <span>Conversão atual dos pedidos</span>
+              <span class="value">
+                {{ mostraResultado && conversaoAtual !== null ? (conversaoAtual | number:'1.2-2') + '%' : '–' }}
+              </span>
+            </div>
+            <div class="line">
+              <span>Faturamento atual no whatsapp</span>
+              <span class="value">
+                {{ mostraResultado && faturamentoAtual !== null ? (faturamentoAtual | currency:'BRL':'symbol':'1.2-2') : '–' }}
+              </span>
+            </div>
+            <div class="line">
+              <span>Conversão com Zapfarma</span>
+              <span class="value">
+                {{ mostraResultado && conversaoZapfarma !== null ? (conversaoZapfarma | number:'1.2-2') + '%' : '–' }}
+              </span>
+            </div>
+            <div class="line">
+              <span>Faturamento com Zapfarma no whatsapp</span>
+              <span class="value">
+                {{ mostraResultado && faturamentoZapfarma !== null ? (faturamentoZapfarma | currency:'BRL':'symbol':'1.2-2') : '–' }}
+              </span>
+            </div>
+            <div class="line">
+              <span>Crescimento no faturamento</span>
+              <span class="value">
+                {{ mostraResultado && crescimento !== null ? (crescimento | currency:'BRL':'symbol':'1.2-2') : '–' }}
+              </span>
+            </div>
+          </div>
+         
+        </div>
+      </div>
     </section>
     <section class="front-zapfarma-home__container_05" id="front-zapfarma-home__container_05">
         <div class="front-zapfarma-home__container_05__camada">
