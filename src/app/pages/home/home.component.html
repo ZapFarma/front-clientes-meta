@@ -455,18 +455,8 @@
                         >
                     </div>
                     <div class="input">
-                        <input type="text" mask="(00) 00000-0000||(00) 0000-0000" formControlName="whatsappDelivery" placeholder="Número do whatsapp do delivery"
-                        [ngClass]="{'invalid': formulario.get('whatsappDelivery')?.invalid && formulario.get('whatsappDelivery')?.touched}"
-                        >
-                    </div>
-                    <div class="input">
                         <input type="text" formControlName="emailContato" placeholder="Email de contato"
                         [ngClass]="{'invalid': formulario.get('emailContato')?.invalid && formulario.get('emailContato')?.touched}"
-                        >
-                    </div>
-                    <div class="input">
-                        <input type="text" formControlName="enderecoFarmacia" placeholder="Endereço da sua farmácia"
-                        [ngClass]="{'invalid': formulario.get('enderecoFarmacia')?.invalid && formulario.get('enderecoFarmacia')?.touched}"
                         >
                     </div>
                     <div (click)="enviarFormulario()" class="front-zapfarma-home__container_10__titulo__botao">
