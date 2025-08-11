@@ -107,8 +107,12 @@ export class HomeComponent implements OnInit {
   }
 
   calcular() {
-    const pedidos = Number(this.calcForm.value.pedidos);
-    const vendas = Number(this.calcForm.value.vendas);
+    let pedidos = Number(this.calcForm.value.pedidos);
+    let vendas = Number(this.calcForm.value.vendas);
+
+    // Multiplica pedidos por 30
+    pedidos = pedidos * 30;
+    vendas = vendas * 30;
 
     // Converte ticket para número (R$ 1.234,56 -> 1234.56)
     let ticketStr = this.calcForm.value.ticket || '';
