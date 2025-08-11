@@ -114,64 +114,79 @@
             </div> -->
         </div>
     </section>
+    
     <section class="front-zapfarma-home__container_04" id="front-zapfarma-home__container_04">
-        <div class="front-zapfarma-home__container_04__topo">
-            <h2>Tecnologia que gera resultados reais</h2>
-            <p>Sabemos que o cliente faz várias cotações ao mesmo tempo, então quem responde mais <span
-                    class="destaque">rápido</span> e <span class="destaque">melhor</span> vende mais</p>
-        </div>
-        <div class="front-zapfarma-home__container_04__camada">
-            <div class="front-zapfarma-home__container_04__titulo">
-                <h2>Calculadora de desempenho</h2>
-                <span>Quanto investe em tráfego pago</span>
-                <div class="input">
-                    <span>R$ 1.500,00</span>
-                </div>
-                <span>Quantos pedidos chegam pelo whatsapp no mês</span>
-                <div class="input">
-                    <span>7500</span>
-                </div>
-                <span>Quantas vendas são fechadas pelo whatsapp no mês?</span>
-                <div class="input">
-                    <span>1875</span>
-                </div>
-                <span>Qual o ticket médio das vendas pelo whatsapp</span>
-                <div class="input">
-                    <span>R$ 48,00</span>
-                </div>
-                <p class="disclaimer">Cálculo baseado em dados de crescimento médio das vendas em 15 pontos percentuais
-                    sobre a conversão atual da farmácia.</p>
-
+      <div class="front-zapfarma-home__container_04__topo">
+        <h2>Tecnologia que gera resultados reais</h2>
+        <p>
+          Sabemos que o cliente faz várias cotações ao mesmo tempo, então quem responde mais
+          <span class="destaque">rápido</span> e <span class="destaque">melhor</span> vende mais
+        </p>
+      </div>
+      <div class="front-zapfarma-home__container_04__camada">
+        <div class="front-zapfarma-home__container_04__titulo">
+          <form [formGroup]="calcForm">
+            <h2>Calculadora de desempenho</h2>
+            <span>Quantos pedidos chegam pelo whatsapp no dia?</span>
+            <div class="input">
+              <input type="text" formControlName="pedidos" mask="separator.2" thousandSeparator="." decimalMarker="," placeholder="Pedidos do dia:" 
+             [ngClass]="{'invalid': calcForm.get('pedidos')?.invalid && calcForm.get('pedidos')?.touched}"/>
             </div>
-            <div class="front-zapfarma-home__container_04__resultado">
-                <h2>Resultado</h2>
-                <div class="front-zapfarma-home__container_04__resultado__tabela">
-                    <div class="line">
-                        <span>Conversão atual dos pedidos</span>
-                        <span class="value">25%</span>
-                    </div>
-                    <div class="line">
-                        <span>Faturamento atual no whatsapp</span>
-                        <span class="value">R$ 90.000,00</span>
-                    </div>
-                    <div class="line">
-                        <span>Conversão com Zapfarma</span>
-                        <span class="value">40%</span>
-                    </div>
-                    <div class="line">
-                        <span>Faturamento com Zapfarma no whatsapp</span>
-                        <span class="value">R$ 144.000,00</span>
-                    </div>
-                    <div class="line">
-                        <span>Crescimento no faturamento </span>
-                        <span class="value">R$ 54.000,00</span>
-                    </div>
-                </div>
-                <div class="front-zapfarma-home__container_04__resultado__botao">
-                    <a href="#front-zapfarma-home__container_10"><p>Quero esses resultados</p></a>
-                </div>
+            <span>Quantas vendas são fechadas pelo whatsapp no dia?</span>
+            <div class="input">
+              <input type="text" formControlName="vendas" mask="separator.2" thousandSeparator="." decimalMarker="," placeholder="Vendas do dia:"
+              [ngClass]="{'invalid': calcForm.get('vendas')?.invalid && calcForm.get('vendas')?.touched}" />
             </div>
+            <span>Qual o ticket médio das vendas pelo whatsapp</span>
+            <div class="input">
+              <input type="text" formControlName="ticket" placeholder="Ticket médio:" (input)="onTicketInput($event)"
+              [ngClass]="{'invalid': calcForm.get('ticket')?.invalid && calcForm.get('ticket')?.touched}" />
+            </div>
+          </form>
+           <div class="front-zapfarma-home__container_04__resultado__botao">
+            <button type="button" (click)="calcular()">Quero esses resultados</button>
+          </div>
+          <p class="disclaimer">
+            Cálculo baseado em dados de crescimento médio das vendas em 15 pontos percentuais sobre a conversão atual da farmácia.
+          </p>
         </div>
+        <div class="front-zapfarma-home__container_04__resultado">
+          <h2>Resultado Mensal</h2>
+          <div class="front-zapfarma-home__container_04__resultado__tabela" >
+            <div class="line">
+              <span>Conversão atual dos pedidos</span>
+              <span class="value">
+                {{ mostraResultado && conversaoAtual !== null ? (conversaoAtual | number:'1.2-2') + '%' : '–' }}
+              </span>
+            </div>
+            <div class="line">
+              <span>Faturamento atual no whatsapp</span>
+              <span class="value">
+                {{ mostraResultado && faturamentoAtual !== null ? (faturamentoAtual | currency:'BRL':'symbol':'1.2-2') : '–' }}
+              </span>
+            </div>
+            <div class="line">
+              <span>Conversão com Zapfarma</span>
+              <span class="value">
+                {{ mostraResultado && conversaoZapfarma !== null ? (conversaoZapfarma | number:'1.2-2') + '%' : '–' }}
+              </span>
+            </div>
+            <div class="line">
+              <span>Faturamento com Zapfarma no whatsapp</span>
+              <span class="value">
+                {{ mostraResultado && faturamentoZapfarma !== null ? (faturamentoZapfarma | currency:'BRL':'symbol':'1.2-2') : '–' }}
+              </span>
+            </div>
+            <div class="line">
+              <span>Crescimento no faturamento</span>
+              <span class="value">
+                {{ mostraResultado && crescimento !== null ? (crescimento | currency:'BRL':'symbol':'1.2-2') : '–' }}
+              </span>
+            </div>
+          </div>
+         
+        </div>
+      </div>
     </section>
     <section class="front-zapfarma-home__container_05" id="front-zapfarma-home__container_05">
         <div class="front-zapfarma-home__container_05__camada">
@@ -440,18 +455,8 @@
                         >
                     </div>
                     <div class="input">
-                        <input type="text" mask="(00) 00000-0000||(00) 0000-0000" formControlName="whatsappDelivery" placeholder="Número do whatsapp do delivery"
-                        [ngClass]="{'invalid': formulario.get('whatsappDelivery')?.invalid && formulario.get('whatsappDelivery')?.touched}"
-                        >
-                    </div>
-                    <div class="input">
                         <input type="text" formControlName="emailContato" placeholder="Email de contato"
                         [ngClass]="{'invalid': formulario.get('emailContato')?.invalid && formulario.get('emailContato')?.touched}"
-                        >
-                    </div>
-                    <div class="input">
-                        <input type="text" formControlName="enderecoFarmacia" placeholder="Endereço da sua farmácia"
-                        [ngClass]="{'invalid': formulario.get('enderecoFarmacia')?.invalid && formulario.get('enderecoFarmacia')?.touched}"
                         >
                     </div>
                     <div (click)="enviarFormulario()" class="front-zapfarma-home__container_10__titulo__botao">

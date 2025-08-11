@@ -15,6 +15,7 @@ import {
   FormGroup,
   ReactiveFormsModule,
   Validators,
+  FormBuilder,
 } from '@angular/forms';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ContatoService } from '../../services/contatos/contatos.service';
@@ -58,17 +59,92 @@ export class HomeComponent implements OnInit {
   formulario!: FormGroup;
 
   bounce: any;
+  calcForm: FormGroup;
+
+  conversaoAtual: number | null = null;
+  faturamentoAtual: number | null = null;
+  conversaoZapfarma: number | null = null;
+  faturamentoZapfarma: number | null = null;
+  crescimento: number | null = null;
+  mostraResultado = false;
+
+  constructor(private fb: FormBuilder) {
+    this.calcForm = this.fb.group({
+      pedidos: [''],
+      vendas: [''],
+      ticket: ['']
+    });
+  }
+
   ngOnInit(): void {
     this.formulario = new FormGroup({
       nomeFarmacia: new FormControl('', Validators.required),
       contato: new FormControl('', Validators.required),
-      whatsappDelivery: new FormControl('', Validators.required),
       emailContato: new FormControl('', [
         Validators.required,
         Validators.email,
       ]),
-      enderecoFarmacia: new FormControl('', Validators.required),
+    
     });
+    this.calcForm = new FormGroup({
+      pedidos: new FormControl('', Validators.required),
+      vendas: new FormControl('', Validators.required),
+      ticket: new FormControl('', Validators.required),
+    });
+  }
+
+  onTicketInput(event: any) {
+    // Formata o valor para moeda brasileira em tempo real
+    let value = event.target.value.replace(/\D/g, '');
+    value = (parseInt(value, 10) / 100).toFixed(2);
+    // Substitui ponto por vírgula para exibir como moeda brasileira
+    value = value.replace('.', ',');
+    // Adiciona separador de milhar
+    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    event.target.value = value;
+    this.calcForm.get('ticket')?.setValue(event.target.value, { emitEvent: false });
+    // Não chama calcular aqui!
+  }
+
+  calcular() {
+    let pedidos = Number(this.calcForm.value.pedidos);
+    let vendas = Number(this.calcForm.value.vendas);
+
+    // Multiplica pedidos por 30
+    pedidos = pedidos * 30;
+    vendas = vendas * 30;
+
+    // Converte ticket para número (R$ 1.234,56 -> 1234.56)
+    let ticketStr = this.calcForm.value.ticket || '';
+    ticketStr = ticketStr.replace(/\./g, '').replace(',', '.');
+    const ticket = Number(ticketStr);
+
+    if (!pedidos || !vendas || !ticket) {
+      this.conversaoAtual = null;
+      this.faturamentoAtual = null;
+      this.conversaoZapfarma = null;
+      this.faturamentoZapfarma = null;
+      this.crescimento = null;
+      this.mostraResultado = true;
+      return;
+    }
+
+    // D: Conversão atual dos pedidos
+    this.conversaoAtual = pedidos > 0 ? (vendas / pedidos) * 100 : 0;
+
+    // E: Faturamento atual no whatsapp
+    this.faturamentoAtual = vendas * ticket;
+
+    // F: Conversão com Zapfarma
+    this.conversaoZapfarma = this.conversaoAtual + 15;
+
+    // G: Faturamento com Zapfarma no whatsapp
+    this.faturamentoZapfarma = pedidos * (this.conversaoZapfarma / 100) * ticket;
+
+    // H: Crescimento no faturamento
+    this.crescimento = this.faturamentoZapfarma - this.faturamentoAtual;
+
+    this.mostraResultado = true;
   }
 
   enviarFormulario(): void {
@@ -77,15 +153,12 @@ export class HomeComponent implements OnInit {
     }else {
       const nomeFarmacia = this.formulario.get('nomeFarmacia')?.value;
       const contato = this.formulario.get('contato')?.value;
-      const whatsappDelivery = this.formulario.get('whatsappDelivery')?.value;
       const emailContato = this.formulario.get('emailContato')?.value;
-      const enderecoFarmacia = this.formulario.get('enderecoFarmacia')?.value;
 
-      const mensagem = `Olá, eu sou *${nomeFarmacia}*, %0AEstou acessando o site da Zapfarma e gostaria de mais informações, seguem meus dados:%0A%0A*Contato*:%0A${contato}%0A*WhatsApp do delivery:*%0A${whatsappDelivery}%0A*Email de contato:*%0A${emailContato}%0A*Endereço da farmácia:*%0A${enderecoFarmacia}`;
-      const linkWhatsApp = `https://wa.me/5521984384352?text=${mensagem}`;
+      const mensagem = `Olá, eu sou *${nomeFarmacia}*, %0AEstou acessando o site da Zapfarma e gostaria de mais informações, seguem meus dados:%0A%0A*Contato*:%0A${contato}%0A*Email de contato:*%0A${emailContato}`;
+      const linkWhatsApp = `https://wa.me/552135205492?text=${mensagem}`;
 
       window.open(linkWhatsApp, '_blank');
     }
   }
 }
-
