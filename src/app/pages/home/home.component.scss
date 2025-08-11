@@ -491,7 +491,7 @@ a {
                     display: flex;
                     width: 90%;
                     margin-bottom: $space-large;
-                    background: rgba(81, 112, 132, 0.7294117647);
+                    background: #334048ba;
                     border: 0;
                     color: #ffffff;
                     font-size: $font-size-large;
@@ -1244,49 +1244,55 @@ a {
                 border-radius: $space-large;
                 box-shadow: 0 0 16px #ffffff;
                 background: #bfd4b93d;
-                text-align: left;
+                text-align: center;
+                height: 260px;
 
                 li {
                     text-align: left;
-                    line-height: 20px;
                 }
 
                 p {
                     padding: 0;
-                    margin: 0;
+                    margin: 0 0 0 0;
                 }
 
                 span {
                     margin: 0;
                 }
 
+
                 img {
-                    width: 90px;
+                    width: 150px;
                     padding: $space-large;
                     ;
                 }
 
                 .titulo {
-                    color: #ffffff;
-                    font-size: $font-size-xx-large;
-                    font-weight: bold;
-                    padding-bottom: $space-medium;
+                    color: $primary-palette-variant1;
+                    font-size: $font-size-large;
+                    font-weight: 400;
+                }
 
+                .valor {
+                    color: $primary-palette-variant1;
+                    font-size: $font-size-x-large;
+                    height: 105px;
+                    font-weight: 400;
+                    margin-top: $space-large;
                 }
 
                 .botao {
-                    color: $secondary-color-font;
-                    // background: #6abe501c;
-                    // height: 40px;
-                    // border: 1px solid $primary-palette-variant1;
-                    // border-radius: 20px;
-                    // justify-content: center;
+                    color: $primary-palette-variant1;
+                    background: #6abe501c;
+                    height: 40px;
+                    border: 1px solid $primary-palette-variant1;
+                    border-radius: 20px;
+                    justify-content: center;
                     display: flex;
                     align-items: center;
                     cursor: pointer;
                 }
             }
-
         }
 
         &__resultado {
@@ -1349,17 +1355,17 @@ a {
             }
 
             &__item {
-                // padding: $space-large 0 0 0;
+                padding: $space-large;
                 // width: 45%;
                 // margin: 0px $space-large 0px $space-large;
-                // border: 1px solid #ffffff;
+                border: 1px solid #ffffff;
                 color: #ffffff;
                 font-size: $font-size-medium;
                 border-radius: $space-large;
-                // box-shadow: 0 0 16px #ffffff;
-                // background: #bfd4b93d;
+                box-shadow: 0 0 16px #ffffff;
+                background: #bfd4b93d;
                 text-align: center;
-                // margin-top: 24px;
+                height: 260px;
 
                 li {
                     text-align: left;
@@ -1376,9 +1382,9 @@ a {
 
 
                 img {
-                    width: 100%;
-                    // padding: $space-large;
-                    border-radius: $space-large;
+                    width: 150px;
+                    padding: $space-large;
+                    ;
                 }
 
                 .titulo {
@@ -1406,6 +1412,26 @@ a {
                     align-items: center;
                     cursor: pointer;
                 }
+            }
+
+            &__botao {
+                //  padding: $space-large;
+                width: 20%;
+                margin: 0 auto;
+                border: 1px solid $primary-button-color;
+                color: #ffffff;
+                font-size: $font-size-medium;
+                border-radius: $space-large;
+                box-shadow: 0 0 16px $primary-button-color;
+                background: #33a4eb10;
+                text-align: center;
+                margin-top: $space-large;
+                margin-bottom: $space-xs-large;
+            }
+
+            &__botao:hover {
+                background: #33a5eb00;
+
             }
         }
     }
@@ -2272,6 +2298,11 @@ a {
 
 }
 
+.front-zapfarma-home__container_04__titulo .input input::placeholder {
+  color: #a7abba;
+  opacity: 1;
+}
+
 @media screen and (max-width: 768px) {
     .front-zapfarma-home {
         &__container_01 {
@@ -2902,4 +2933,6 @@ a {
         }
 
     }
+
+    
 }

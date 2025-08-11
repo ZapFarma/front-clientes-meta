@@ -127,19 +127,19 @@
         <div class="front-zapfarma-home__container_04__titulo">
           <form [formGroup]="calcForm">
             <h2>Calculadora de desempenho</h2>
-            <span>Quantos pedidos chegam pelo whatsapp no mês</span>
+            <span>Quantos pedidos chegam pelo whatsapp no dia?</span>
             <div class="input">
-              <input type="text" formControlName="pedidos" mask="separator.2" thousandSeparator="." decimalMarker="," placeholder="400" 
+              <input type="text" formControlName="pedidos" mask="separator.2" thousandSeparator="." decimalMarker="," placeholder="Pedidos do dia:" 
              [ngClass]="{'invalid': calcForm.get('pedidos')?.invalid && calcForm.get('pedidos')?.touched}"/>
             </div>
-            <span>Quantas vendas são fechadas pelo whatsapp no mês?</span>
+            <span>Quantas vendas são fechadas pelo whatsapp no dia?</span>
             <div class="input">
-              <input type="text" formControlName="vendas" mask="separator.2" thousandSeparator="." decimalMarker="," placeholder="100"
+              <input type="text" formControlName="vendas" mask="separator.2" thousandSeparator="." decimalMarker="," placeholder="Vendas do dia:"
               [ngClass]="{'invalid': calcForm.get('vendas')?.invalid && calcForm.get('vendas')?.touched}" />
             </div>
             <span>Qual o ticket médio das vendas pelo whatsapp</span>
             <div class="input">
-              <input type="text" formControlName="ticket" placeholder="R$ 200,00" (input)="onTicketInput($event)"
+              <input type="text" formControlName="ticket" placeholder="Ticket médio:" (input)="onTicketInput($event)"
               [ngClass]="{'invalid': calcForm.get('ticket')?.invalid && calcForm.get('ticket')?.touched}" />
             </div>
           </form>
