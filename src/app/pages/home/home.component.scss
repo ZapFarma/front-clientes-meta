@@ -520,12 +520,6 @@ a {
                 
             }
 
-            &__botao:hover {
-                background: #2121214d;
-                /* muda a cor de fundo ao passar o mouse */
-                color: transparent;
-                /* mantém a cor do texto branca */
-            }
 
             .disclaimer {
                 color: #ffffff;
@@ -578,6 +572,8 @@ a {
                 border: 1px solid $primary-palette-variant1;
                 padding: 10px;
                 border-radius: 25px;
+                width: 94%;
+                border-radius: 25px;
                 color: $primary-palette-variant1;
                 background: #5ef6262e;
                 cursor: pointer;
@@ -589,8 +585,15 @@ a {
                     border: none;
                     background: transparent;
                     text-align: center;
+                    font-size: medium;
                     
                 }
+            }
+            &__botao:hover {
+                background: #2121214d;
+                /* muda a cor de fundo ao passar o mouse */
+                color: #ffffff;
+                /* mantém a cor do texto branca */
             }
         }
     }
@@ -2161,6 +2164,7 @@ a {
             &__botao{
                 border: 1px solid #6ABE50;
                 border-radius: 25px;
+                width: 100%;
                 color: #6ABE50;
                 background: rgba(94, 246, 38, 0.1803921569);
                 cursor: pointer;
