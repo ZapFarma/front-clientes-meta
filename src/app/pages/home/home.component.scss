@@ -94,7 +94,7 @@ a {
             }
 
             &__botao {
-                border: 1px solid $primary-button-color;
+                border: 1px solid #549540;
                 padding: 10px;
                 border-radius: 25px;
                 color: #ffffff;
@@ -145,6 +145,8 @@ a {
 
 
     }
+
+    
 
     &__container_02 {
         background-repeat: no-repeat;
@@ -213,7 +215,7 @@ a {
             }
 
             &__botao {
-                border: 1px solid $primary-button-color;
+                border: 1px solid #549540;
                 padding: 10px;
                 border-radius: 25px;
                 color: #ffffff;
@@ -2306,6 +2308,7 @@ a {
   color: #a7abba;
   opacity: 1;
 }
+
 
 @media screen and (max-width: 768px) {
     .front-zapfarma-home {
