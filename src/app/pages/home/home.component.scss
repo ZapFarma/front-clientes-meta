@@ -909,12 +909,12 @@ a {
                 padding: 10px;
                 border-radius: 25px;
                 color: #ffffff;
-                background: #818a912e;
+                background: #0000005f;
                 cursor: pointer;
                 text-align: center;
                 margin: $space-large 0px $space-small 0px;
             }
-
+            
             &__botao:hover {
                 background: #2121214d;
                 /* muda a cor de fundo ao passar o mouse */
@@ -1103,12 +1103,12 @@ a {
                 //  padding: $space-large;
                 width: 20%;
                 margin: 0 auto;
-                border: 1px solid $primary-button-color;
+                border: 1px solid #549540;
                 color: #ffffff;
                 font-size: $font-size-medium;
                 border-radius: $space-large;
-                box-shadow: 0 0 16px $primary-button-color;
-                background: #33a4eb10;
+                box-shadow: 0 0 16px rgb(84 237 35 / 35%);
+                background: #33eb9533;
                 text-align: center;
                 margin-top: $space-large;
                 margin-bottom: $space-xs-large;
