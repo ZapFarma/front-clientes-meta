@@ -21,6 +21,7 @@ import { TreinamentosComponent } from './pages/treinamentos/treinamentos.compone
 import { MapsComponent } from './pages/maps/maps.component';
 import { SobreComponent } from './pages/sobre/sobre.component';
 import { PoliticaPrivacidadeComponent } from './pages/politica-privacidade/politica-privacidade.component';
+import { TermosUsoComponent } from './pages/termos-uso/termos-uso.component';
 
 
 export const appRoutes: Route[] = [
@@ -45,10 +46,12 @@ export const appRoutes: Route[] = [
     { path: 'maps', component: MapsComponent, canActivate: [UsuarioAutenticadoGuard] },
     { path: 'sobre', component: SobreComponent},
     { path: 'politica-privacidade', component: PoliticaPrivacidadeComponent},
+    { path: 'termos-uso', component: TermosUsoComponent},
     
 ];
 
 import { provideRouter, Routes, withInMemoryScrolling } from '@angular/router';
+
 
 
 export const routes: Routes = [

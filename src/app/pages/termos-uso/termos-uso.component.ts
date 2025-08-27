@@ -5,9 +5,9 @@ import { RodapeComponent } from '../rodape/rodape.component';
 
 
 @Component({
-  selector: 'front-zapfarma-politica-privacidade',
-  templateUrl: './politica-privacidade.component.html',
-  styleUrls: ['./politica-privacidade.component.scss'],
+  selector: 'front-zapfarma-termos-uso',
+  templateUrl: './termos-uso.component.html',
+  styleUrls: ['./termos-uso.component.scss'],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -17,6 +17,6 @@ import { RodapeComponent } from '../rodape/rodape.component';
     ]
 
 })
-export class PoliticaPrivacidadeComponent {
+export class TermosUsoComponent {
   
  }
