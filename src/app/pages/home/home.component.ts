@@ -7,28 +7,23 @@ import {
 } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { transition, trigger, useAnimation } from '@angular/animations';
-import {
-  bounceIn,
-  fadeIn,
-} from 'ng-animate';
+import { bounceIn, fadeIn } from 'ng-animate';
 import {
   FormGroup,
   ReactiveFormsModule,
   Validators,
   FormBuilder,
+  FormControl,
 } from '@angular/forms';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ContatoService } from '../../services/contatos/contatos.service';
-import {
-  HttpClient,
-} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { WebHookService } from '../../services/webhook/webhook.service';
 import { ToolbarComponent } from '../../shared/toolbar/toolbar.component';
 import { MatIconModule } from '@angular/material/icon';
-
-// const CepDistance  = inport "cep-distance";
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
-import { FormControl } from '@angular/forms';
+import { RodapeComponent } from '../rodape/rodape.component';
+import { ActivatedRoute } from '@angular/router';
 
 register();
 
@@ -44,22 +39,22 @@ register();
     MatExpansionModule,
     ReactiveFormsModule,
     NgxMaskDirective,
-    ToolbarComponent,
-    NgxMaskDirective,
     NgxMaskPipe,
+    ToolbarComponent,
+    RodapeComponent,
+    HttpClientModule,
   ],
   animations: [
     trigger('myAnimation0', [transition('* => *', useAnimation(fadeIn))]),
     trigger('myAnimation1', [transition('* => *', useAnimation(bounceIn))]),
   ],
-  providers: [provideNgxMask(), ContatoService, WebHookService, HttpClient],
+  providers: [provideNgxMask(), ContatoService, WebHookService],
 })
 export class HomeComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
-  formulario!: FormGroup;
 
-  bounce: any;
-  calcForm: FormGroup;
+  formulario!: FormGroup;
+  calcForm!: FormGroup;
 
   conversaoAtual: number | null = null;
   faturamentoAtual: number | null = null;
@@ -68,11 +63,11 @@ export class HomeComponent implements OnInit {
   crescimento: number | null = null;
   mostraResultado = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute) {
     this.calcForm = this.fb.group({
       pedidos: [''],
       vendas: [''],
-      ticket: ['']
+      ticket: [''],
     });
   }
 
@@ -80,41 +75,44 @@ export class HomeComponent implements OnInit {
     this.formulario = new FormGroup({
       nomeFarmacia: new FormControl('', Validators.required),
       contato: new FormControl('', Validators.required),
-      emailContato: new FormControl('', [
-        Validators.required,
-        Validators.email,
-      ]),
-    
+      emailContato: new FormControl('', [Validators.required, Validators.email]),
     });
+
     this.calcForm = new FormGroup({
       pedidos: new FormControl('', Validators.required),
       vendas: new FormControl('', Validators.required),
       ticket: new FormControl('', Validators.required),
     });
+
+    // Scroll para fragment se houver hash na URL
+    this.route.fragment.subscribe((fragment) => {
+      if (fragment) {
+        setTimeout(() => {
+          const el = document.getElementById(fragment);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      }
+    });
   }
 
   onTicketInput(event: any) {
-    // Formata o valor para moeda brasileira em tempo real
     let value = event.target.value.replace(/\D/g, '');
     value = (parseInt(value, 10) / 100).toFixed(2);
-    // Substitui ponto por vírgula para exibir como moeda brasileira
     value = value.replace('.', ',');
-    // Adiciona separador de milhar
     value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     event.target.value = value;
     this.calcForm.get('ticket')?.setValue(event.target.value, { emitEvent: false });
-    // Não chama calcular aqui!
   }
 
   calcular() {
     let pedidos = Number(this.calcForm.value.pedidos);
     let vendas = Number(this.calcForm.value.vendas);
 
-    // Multiplica pedidos por 30
     pedidos = pedidos * 30;
     vendas = vendas * 30;
 
-    // Converte ticket para número (R$ 1.234,56 -> 1234.56)
     let ticketStr = this.calcForm.value.ticket || '';
     ticketStr = ticketStr.replace(/\./g, '').replace(',', '.');
     const ticket = Number(ticketStr);
@@ -129,35 +127,25 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    // D: Conversão atual dos pedidos
     this.conversaoAtual = pedidos > 0 ? (vendas / pedidos) * 100 : 0;
-
-    // E: Faturamento atual no whatsapp
     this.faturamentoAtual = vendas * ticket;
-
-    // F: Conversão com Zapfarma
     this.conversaoZapfarma = this.conversaoAtual + 15;
-
-    // G: Faturamento com Zapfarma no whatsapp
     this.faturamentoZapfarma = pedidos * (this.conversaoZapfarma / 100) * ticket;
-
-    // H: Crescimento no faturamento
     this.crescimento = this.faturamentoZapfarma - this.faturamentoAtual;
-
     this.mostraResultado = true;
   }
 
   enviarFormulario(): void {
     if (this.formulario.invalid) {
-    this.formulario.markAllAsTouched();
-    }else {
+      this.formulario.markAllAsTouched();
+    } else {
       const nomeFarmacia = this.formulario.get('nomeFarmacia')?.value;
       const contato = this.formulario.get('contato')?.value;
       const emailContato = this.formulario.get('emailContato')?.value;
 
       const mensagem = `Olá, eu sou *${nomeFarmacia}*, %0AEstou acessando o site da Zapfarma e gostaria de mais informações, seguem meus dados:%0A%0A*Contato*:%0A${contato}%0A*Email de contato:*%0A${emailContato}`;
-      const linkWhatsApp = `https://wa.me/552135205492?text=${mensagem}`;
 
+      const linkWhatsApp = `https://wa.me/552135205492?text=${mensagem}`;
       window.open(linkWhatsApp, '_blank');
     }
   }
