@@ -14,12 +14,10 @@ a {
 
     // color: $color-background-bk;
     &__container_01 {
-        background-size: 278vh;
-        background-position-x: 95%;
-        background-repeat: no-repeat;
-        // background-image: url("./../../../assets/imgs/logo_zapfarma.png");
+       background-repeat: no-repeat;
+        background-image: url("./../../../assets/imgs/fundo-verde-azul.png");
         background-color: $primary-color;
-        background-position-y: center;
+        background-position-y: -600px;
         color: #ffffff;
 
         @media screen and (max-width: 768px) {
@@ -28,14 +26,18 @@ a {
 
         width: 100%;
         padding: 100px 0 0 0;
+
+
+        width: 100%;
+        padding: 100px 0 0 0;
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
 
         &__camada {
-            display: flex;
-            justify-content: space-between;
+            // display: flex;
+            // justify-content: space-between;
             width: 100%;
-            margin-bottom: 70px;
+            // margin-bottom: 70px;
         }
         img {
             height: 70px;
@@ -46,11 +48,12 @@ a {
 
             // color: $secondary-color-font;
             @media screen and (min-width: 768px) {
-                width: 44.225%;
+                width: auto;
+                height: 70vh;
             }
 
             padding: $space-large $space-large 0px $space-large;
-            position: relative;
+            // position: relative;
 
             h1 {
                 background: -webkit-linear-gradient(140deg, $secondary-color-font, $primary-palette-variant1);

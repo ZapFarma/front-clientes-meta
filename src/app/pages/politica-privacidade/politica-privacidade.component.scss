@@ -32,21 +32,21 @@ a {
         align-content: center;
 
         &__camada {
-            // display: flex;
-            align-items: center;
-            // width: ;
-            text-align: center;
-            align-content: center;
+             display: flex;
+            // align-items: center;
+            // // width: ;
+            // text-align: center;
+            // align-content: center;
         }
         .img {
             align-items: center;        
-            // display: flex;
-            width: 30%;
+            display: flex;
+            width: 20%;
         }
 
         &__titulo {
 
-            text-align: center;
+            // text-align: center;
 
             // color: $secondary-color-font;
             // @media screen and (min-width: 768px) {
