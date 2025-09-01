@@ -1650,16 +1650,20 @@ a {
                 // padding: 10px;
                 border-radius: 20px;
                 color: #ffffff;
-                background: #5ef6262e;
+                background:  rgb(125 185 93 );
                 cursor: pointer;
                 text-align: center;
                 margin: $space-large 0px $space-small 0px;
                 align-items: center;
                 width:50%;
+                
+                p {
+                    color: white;
+                }
             }
 
             &__botao:hover {
-                background: #2121214d;
+                background: rgb(92, 148, 63);
                 /* muda a cor de fundo ao passar o mouse */
                 color: #ffffff;
                 /* mantém a cor do texto branca */
@@ -1700,6 +1704,7 @@ a {
                 }
 
                 p {
+                    color: #ffffff;
                     padding: 0;
                     margin: 0;
                 }
@@ -1723,7 +1728,7 @@ a {
 
                 .botao {
                     // color: $primary-palette-variant1;
-                    background: #6abe501c;
+                    background: #ffffff;
                     height: 40px;
                     border: 10px solid $primary-palette-variant1;
                     border-radius: 20px;
@@ -1804,16 +1809,20 @@ a {
                 // padding: 10px;
                 border-radius: 20px;
                 color: #ffffff;
-                background: #5ef6262e;
+                background: rgb(125 185 93 );
                 cursor: pointer;
                 text-align: center;
                 margin: $space-large 0px $space-small 0px;
                 align-items: center;
                 width:50%;
+                
+                p {
+                    color: white;
+                }
             }
 
             &__botao:hover {
-                background: #2121214d;
+                background: rgb(92, 148, 63);
                 /* muda a cor de fundo ao passar o mouse */
                 color: #ffffff;
                 /* mantém a cor do texto branca */
@@ -1845,6 +1854,7 @@ a {
                 p {
                     padding: 0;
                     margin: 0 0 0 0;
+                    color: ffffff;
                 }
 
                 span {
