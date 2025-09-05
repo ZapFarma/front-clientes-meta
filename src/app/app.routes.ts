@@ -19,6 +19,10 @@ import { EditarEmpresasComponent } from './pages/empresas/editar/editar-empresas
 import { AlterarSenhaComponent } from './pages/alterar-senha/alterar-senha.component';
 import { TreinamentosComponent } from './pages/treinamentos/treinamentos.component';
 import { MapsComponent } from './pages/maps/maps.component';
+import { SobreComponent } from './pages/sobre/sobre.component';
+import { PoliticaPrivacidadeComponent } from './pages/politica-privacidade/politica-privacidade.component';
+import { TermosUsoComponent } from './pages/termos-uso/termos-uso.component';
+
 
 export const appRoutes: Route[] = [
     { path: '', component: HomeComponent },
@@ -40,5 +44,29 @@ export const appRoutes: Route[] = [
     { path: 'usuarios-afiliados', component: UsuariosComponent, canActivate: [UsuarioAutenticadoGuard] },
     { path: 'treinamentos', component: TreinamentosComponent, canActivate: [UsuarioAutenticadoGuard] },
     { path: 'maps', component: MapsComponent, canActivate: [UsuarioAutenticadoGuard] },
+    { path: 'sobre', component: SobreComponent},
+    { path: 'politica-privacidade', component: PoliticaPrivacidadeComponent},
+    { path: 'termos-uso', component: TermosUsoComponent},
     
 ];
+
+import { provideRouter, Routes, withInMemoryScrolling } from '@angular/router';
+
+
+
+export const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
+];
+
+// Se o projeto usa o novo standalone API do Angular (sem NgModule):
+export const appRouterProviders = [
+  provideRouter(
+    routes,
+    withInMemoryScrolling({
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled'
+    })
+  )
+];
+

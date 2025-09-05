@@ -1,0 +1,64 @@
+@use './../../../style/tokens.scss' as *; 
+
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: $primary-palette-variant1;
+    cursor: pointer;
+}
+    
+.front-zapfarma-rodape {
+
+    &__container_10 {
+        background-repeat: no-repeat;
+        background-image: url("./../../../assets/imgs/fundo-verde-azul.png");
+        background-color: $primary-color;
+        background-position-y: 100px;
+        color: #ffffff;
+
+        @media screen and (max-width: 768px) {
+            display: block;
+        }
+
+        width: 100%;
+        // padding: 100px 0 0 0;
+
+
+        &__rodape {
+
+            @media screen and (min-width: 426px) {
+                display: flex;
+                justify-content: space-between;
+                padding: 24px 120px 24px;
+        }
+            margin-left: 30px;
+            border-top: 1px solid #34343482;
+
+            span {
+                color: #ffffff;
+                padding-bottom: $space-small;
+                display: flex;
+            }
+
+            p {
+                color: $primary-palette-variant1;
+                margin: $space-small 0;
+            }
+
+            img {
+                width: 40px;
+            }
+
+            .face {
+                width: 35px;
+                vertical-align: inherit;
+                bottom: 1px;
+                position: relative;
+            }
+
+        }
+    }
+}
