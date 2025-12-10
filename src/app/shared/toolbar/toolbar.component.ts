@@ -1,10 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatMenuModule} from '@angular/material/menu';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ElementRef,
+  HostListener,
+} from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
+import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 
+type NavLink = {
+  label: string;
+  description: string;
+  icon: string;
+  href?: string;
+  routerLink?: string;
+};
 
 @Component({
   selector: 'front-zapfarma-toolbar',
@@ -13,18 +24,138 @@ import {MatMenuModule} from '@angular/material/menu';
   standalone: true,
   imports: [
     CommonModule,
-    MatToolbarModule,
     MatIconModule,
-    MatButtonModule,
-    MatMenuModule
+    RouterModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent {
+  mobileMenuOpen = false;
+  userMenuOpen = false;
 
-  constructor() { }
+  readonly publicLinks: NavLink[] = [
+    {
+      label: 'Planos sob medida',
+      description: 'Conheça os pacotes para cada porte de drogaria.',
+      icon: 'layers',
+      href: '#front-zapfarma-home__container_08',
+    },
+    {
+      label: 'Perguntas frequentes',
+      description: 'Principais dúvidas sobre a IA ZapFarma.',
+      icon: 'help',
+      href: '#front-zapfarma-home__container_09',
+    },
+    {
+      label: 'Fale com nosso time',
+      description: 'Abrir canal direto com especialistas.',
+      icon: 'support_agent',
+      href: '#front-zapfarma-home__container_10',
+    },
+    {
+      label: 'Sobre a plataforma',
+      description: 'Nossa visão sobre IA para atendimento.',
+      icon: 'chat_bubble',
+      routerLink: '/sobre',
+    },
+    {
+      label: 'WhatsApp Cloud API',
+      description: 'Entenda a API oficial do Meta para empresas.',
+      icon: 'cloud',
+      routerLink: '/whatsapp-cloud-api',
+    },
+  ];
 
-  ngOnInit() {
+  readonly privateLinks: NavLink[] = [
+    {
+      label: 'Dashboard do cliente',
+      description: 'Métricas em tempo real e recomendações.',
+      icon: 'monitoring',
+      routerLink: '/dashboard',
+    },
+    {
+      label: 'Configurações da IA',
+      description: 'Edite fluxos, regras e integrações.',
+      icon: 'settings',
+      routerLink: '/onboarding-ia/lista',
+    },
+    {
+      label: 'Treinamentos e suporte',
+      description: 'Base de conhecimento premium e chamados.',
+      icon: 'school',
+      routerLink: '/treinamentos',
+    },
+  ];
+
+  constructor(
+    private readonly usuariosService: UsuariosService,
+    private readonly elementRef: ElementRef<HTMLElement>
+  ) {}
+
+  get isAuthenticated(): boolean {
+    return this.usuariosService.logado;
+  }
+
+  get userName(): string {
+    const usuario = this.usuariosService.obterUsuarioLogado;
+    return usuario?.nome ?? '';
+  }
+
+  get userInitials(): string {
+    if (!this.userName) {
+      return '';
+    }
+    const partes = this.userName.trim().split(' ');
+    if (partes.length === 1) {
+      return partes[0].substring(0, 2).toUpperCase();
+    }
+    const first = partes.shift() ?? '';
+    const last = partes.pop() ?? '';
+    return `${first.charAt(0)}${last.charAt(0)}`.toUpperCase();
+  }
+
+  trackByLabel(_: number, link: NavLink): string {
+    return link.label;
+  }
+
+  toggleMenu(): void {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+    if (!this.mobileMenuOpen) {
+      this.userMenuOpen = false;
+    }
+  }
+
+  closeMenu(): void {
+    this.mobileMenuOpen = false;
+    this.userMenuOpen = false;
+  }
+
+  toggleUserMenu(event: Event): void {
+    event.stopPropagation();
+    if (!this.isAuthenticated) {
+      return;
+    }
+    this.userMenuOpen = !this.userMenuOpen;
+  }
+
+  logout(): void {
+    this.usuariosService.deslogar();
+    this.userMenuOpen = false;
+    this.closeMenu();
+  }
+
+  @HostListener('window:resize')
+  onResize(): void {
+    if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
+      this.mobileMenuOpen = false;
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    if (!this.elementRef.nativeElement.contains(event.target as Node)) {
+      this.userMenuOpen = false;
+    }
   }
 
 }

@@ -1,17 +1,25 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
 import { ToolbarComponent } from './toolbar.component';
+import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
   let fixture: ComponentFixture<ToolbarComponent>;
+  const usuariosServiceStub = {
+    get logado() {
+      return false;
+    },
+    get obterUsuarioLogado() {
+      return null;
+    },
+    deslogar: jasmine.createSpy('deslogar'),
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolbarComponent ]
+      imports: [ToolbarComponent],
+      providers: [{ provide: UsuariosService, useValue: usuariosServiceStub }],
     })
     .compileComponents();
   }));

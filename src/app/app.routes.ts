@@ -22,6 +22,9 @@ import { MapsComponent } from './pages/maps/maps.component';
 import { SobreComponent } from './pages/sobre/sobre.component';
 import { PoliticaPrivacidadeComponent } from './pages/politica-privacidade/politica-privacidade.component';
 import { TermosUsoComponent } from './pages/termos-uso/termos-uso.component';
+import { ConfiguracaoIaComponent } from './pages/configuracao-ia/configuracao-ia.component';
+import { ConfiguracaoIaListaComponent } from './pages/configuracao-ia-lista/configuracao-ia-lista.component';
+import { WhatsappCloudApiComponent } from './pages/whatsapp-cloud-api/whatsapp-cloud-api.component';
 
 
 export const appRoutes: Route[] = [
@@ -47,6 +50,9 @@ export const appRoutes: Route[] = [
     { path: 'sobre', component: SobreComponent},
     { path: 'politica-privacidade', component: PoliticaPrivacidadeComponent},
     { path: 'termos-uso', component: TermosUsoComponent},
+    { path: 'onboarding-ia', component: ConfiguracaoIaComponent },
+    { path: 'onboarding-ia/lista', component: ConfiguracaoIaListaComponent },
+    { path: 'whatsapp-cloud-api', component: WhatsappCloudApiComponent },
     
 ];
 
@@ -69,4 +75,3 @@ export const appRouterProviders = [
     })
   )
 ];
-

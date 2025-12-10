@@ -9,11 +9,18 @@
 // $front-zapfarma-warn: mat.define-palette(mat.$red-palette);
 
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     position: relative;
     height: 100%;
     margin: 0;
-    // background-color: #000928;
+    background-color: #000928;
     // font-family: system-ui;
     font-family: "Ubuntu", sans-serif;
     font-weight: 300;
@@ -23,4 +30,3 @@ body {
 button {
     border: 0;
 }
-
