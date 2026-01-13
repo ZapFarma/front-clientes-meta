@@ -146,7 +146,7 @@ export class HomeComponent implements OnInit {
 
       const mensagem = `Olá, eu sou *${nomeFarmacia}*, %0AEstou acessando o site da Zapfarma e gostaria de mais informações, seguem meus dados:%0A%0A*Contato*:%0A${contato}%0A*Email de contato:*%0A${emailContato}`;
 
-      const linkWhatsApp = `https://wa.me/552135205492?text=${mensagem}`;
+      const linkWhatsApp = `https://wa.me/5521966670226?text=${mensagem}`;
       window.open(linkWhatsApp, '_blank');
     }
   }
@@ -162,7 +162,7 @@ export class HomeComponent implements OnInit {
     const texto = encodeURIComponent(
       `Olá, sou ${nome}.\nTelefone: ${contato}\n${mensagemExtra}`
     );
-    const linkWhatsApp = `https://wa.me/5521964276919?text=${texto}`;
+    const linkWhatsApp = `https://wa.me/5521966670226?text=${texto}`;
     window.open(linkWhatsApp, '_blank');
   }
 }
