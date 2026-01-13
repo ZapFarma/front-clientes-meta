@@ -1,14 +1,6 @@
 <nav class="zf-navbar" [class.menu-open]="mobileMenuOpen">
   <div class="navbar-shell">
-    <a class="brand" routerLink="/" (click)="closeMenu()" aria-label="Voltar para o início">
-      Siqueira Alves Drogaria
-      <!-- <img src="assets/imgs/drogarias-mais-barato-logo.png" alt="Drogarias Mais Barato" /> -->
-    </a>
-
-    <div class="shell-actions">
-      <a class="pill ghost" [routerLink]="'/nossas-lojas'" (click)="closeMenu()">
-        Nossas lojas
-      </a>
+    <div class="nav-slot nav-left">
       <button
         class="nav-toggle"
         type="button"
@@ -21,6 +13,16 @@
         <span class="bar"></span>
         <span class="bar"></span>
       </button>
+    </div>
+
+    <a class="brand" routerLink="/" (click)="closeMenu()" aria-label="Voltar para o início">
+      <img src="assets/imgs/Logo-anna-cintra.jpeg" alt="Drogaria Anna Cintra" class="brand-logo" />
+    </a>
+
+    <div class="nav-slot nav-right">
+      <a class="pill ghost" [routerLink]="'/nossas-lojas'" (click)="closeMenu()">
+        Nossas lojas
+      </a>
     </div>
   </div>
 

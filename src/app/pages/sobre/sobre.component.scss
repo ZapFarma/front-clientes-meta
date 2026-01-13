@@ -6,8 +6,12 @@ html {
 
 a {
     text-decoration: none;
-    color: $primary-palette-variant1;
+    color: $primary-color;
     cursor: pointer;
+}
+
+a:hover {
+    color: $secondary-color;
 }
 
 .front-zapfarma-sobre {
@@ -15,10 +19,8 @@ a {
     // color: $color-background-bk;
     &__container_01 {
        background-repeat: no-repeat;
-        background-image: url("./../../../assets/imgs/fundo-verde-azul.png");
-        background-color: $primary-color;
-        background-position-y: -600px;
-        color: #ffffff;
+        background: linear-gradient(180deg, #f6f8fd 0%, #e9f0ff 100%);
+        color: $primary-color;
 
         @media screen and (max-width: 768px) {
             // display: block;
@@ -46,42 +48,28 @@ a {
 
         &__titulo {
 
-            // color: $secondary-color-font;
             @media screen and (min-width: 768px) {
                 width: auto;
-                height: 70vh;
+                min-height: auto;
             }
 
-            padding-left: 80px;
-            padding-right: 80px;
-            padding-bottom: 40px;
-            padding-top: 15px;
+            max-width: 960px;
+            margin: 24px auto 64px;
+            padding: clamp(28px, 5vw, 56px);
+            background: #ffffff;
+            border-radius: 24px;
+            border: 1px solid rgba($primary-color, 0.1);
+            box-shadow: 0 20px 48px rgba(11, 74, 168, 0.12);
 
             h1 {
-                background: -webkit-linear-gradient(140deg, $secondary-color-font, $primary-palette-variant1);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                color: transparent;
+                background: none;
+                -webkit-text-fill-color: initial;
+                color: $primary-color;
                 font-size: $font-size-xs-large;
-                background-size: 200% 10%;
-                animation: gradient 5s linear infinite;
+                margin: 0 0 $space-medium 0;
 
                 @media screen and (min-width: 1024px) {
                     // font-size: 40px;
-                }
-            }
-
-            @keyframes gradient {
-                0% {
-                    background-position: 0% 0%;
-                }
-
-                50% {
-                    background-position: 50% 50%;
-                }
-
-                100% {
-                    background-position: 100% 100%;
                 }
             }
 
@@ -90,14 +78,14 @@ a {
             }
 
             .sub-titulo {
-                color: #ffffff;
+                color: #1f2a44;
                 font-size: $font-size-large;
                 padding-bottom: $space-large;
             }
 
             &__meta {
                 display: flex;
-                color: #ffffff;
+                color: #1f2a44;
                 justify-content: space-between;
 
                 
@@ -135,6 +123,55 @@ a {
             }
         }
 
+        .mvw {
+            margin-top: $space-large;
+            display: grid;
+            gap: $space-medium;
+
+            h2 {
+                margin: 0;
+                font-size: $font-size-x-large;
+                color: $primary-color;
+            }
+        }
+
+        .mvw__item {
+            display: grid;
+            gap: $space-small;
+            padding-bottom: $space-medium;
+            border-bottom: 1px solid rgba($primary-color, 0.12);
+
+            &:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            h3 {
+                margin: 0;
+                color: $secondary-color;
+                font-size: $font-size-large-20;
+            }
+
+            p,
+            li {
+                margin: 0;
+                color: #1f2a44;
+                line-height: 1.6;
+            }
+
+            ul {
+                margin: 0;
+                padding-left: 18px;
+                display: grid;
+                gap: 4px;
+            }
+        }
+
+        p {
+            color: #1f2a44;
+            line-height: 1.6;
+        }
+
         &__wp {
             @media screen and (min-width: 780px) {
                 width: 70.225%;
@@ -159,11 +196,8 @@ a {
 
 
     &__container_10 {
-        background-repeat: no-repeat;
-        background-image: url("./../../../assets/imgs/fundo-verde-azul.png");
-        background-color: $primary-color;
-        background-position-y: -600px;
-        color: #ffffff;
+        background: #f6f8fd;
+        color: $primary-color;
 
         @media screen and (max-width: 768px) {
             display: block;
@@ -215,7 +249,7 @@ a {
 
 
             &__tabela {
-                background-color: #000928a8;
+                background-color: #ffffff;
                 border-radius: 16px;
                 position: relative;
                 display: grid;
@@ -223,7 +257,7 @@ a {
                 line-height: 48px;
 
                 .line {
-                    color: #ffffff;
+                    color: #1f2a44;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
@@ -249,21 +283,21 @@ a {
             }
 
             h2 {
-                color: #ffffff;
+                color: $primary-color;
                 font-size: $font-size-xx-large;
                 text-align: center;
 
             }
 
             p {
-                color: $primary-palette-variant1;
+                color: $primary-color;
                 font-size: $font-size-x-large;
                 margin: 0;
                 text-align: center;
             }
 
             .numero {
-                color: #ffffff;
+                color: $primary-color;
                 font-size: $font-size-xx-large;
                 text-align: center;
             }

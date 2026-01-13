@@ -6,8 +6,12 @@ html {
 
 a {
     text-decoration: none;
-    color: $primary-palette-variant1;
+    color: $primary-color;
     cursor: pointer;
+}
+
+a:hover {
+    color: $secondary-color;
 }
 
 .front-zapfarma-politica-privacidade {
@@ -18,9 +22,9 @@ a {
         background-position-x: 95%;
         background-repeat: no-repeat;
         // background-image: url("./../../../assets/imgs/logo_zapfarma.png");
-        background-color: $primary-color;
+        background: linear-gradient(180deg, #f6f8fd 0%, #e9f0ff 100%);
         background-position-y: center;
-        color: #ffffff;
+        color: $primary-color;
 
         @media screen and (max-width: 768px) {
             display: block;
@@ -45,35 +49,31 @@ a {
         }
 
         &__titulo {
-
-            // text-align: center;
-
-            // color: $secondary-color-font;
-            // @media screen and (min-width: 768px) {
-            //     width: 44.225%;
-            // }
-
-            padding-left: 80px;
-            padding-right: 80px;
-            padding-bottom: 40px;
-            padding-top: 15px;
+            max-width: 960px;
+            margin: 24px auto 64px;
+            padding: clamp(28px, 5vw, 56px);
             position: relative;
+            background: #ffffff;
+            border-radius: 24px;
+            border: 1px solid rgba($primary-color, 0.1);
+            box-shadow: 0 20px 48px rgba(11, 74, 168, 0.12);
 
             h1 {
-                background: -webkit-linear-gradient(140deg, $secondary-color-font, $primary-palette-variant1);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                color: transparent;
+                background: none;
+                -webkit-text-fill-color: initial;
+                color: $primary-color;
                 font-size: $font-size-xs-large;
-                background-size: 200% 10%;
-                animation: gradient 5s linear infinite;
+                margin-bottom: $space-medium;
 
                 @media screen and (min-width: 1024px) {
                     // font-size: 40px;
                 }
             }
             h2 {
-                color: $secondary-color;
+                color: $primary-color;
+                border-left: 4px solid $secondary-color;
+                padding-left: 12px;
+                margin-top: $space-large;
             }
             // 103 152 76
         
@@ -97,14 +97,14 @@ a {
             }
 
             .sub-titulo {
-                color: #ffffff;
+                color: #1f2a44;
                 font-size: $font-size-large;
                 padding-bottom: $space-large;
             }
 
             &__meta {
                 display: flex;
-                color: #ffffff;
+                color: #1f2a44;
                 justify-content: space-between;
 
                 
@@ -289,5 +289,18 @@ a {
 
             }
         }
+    }
+}
+
+.front-zapfarma-politica-privacidade__container_01__titulo {
+    p,
+    li {
+        color: #1f2a44;
+        line-height: 1.6;
+    }
+
+    ul {
+        padding-left: 22px;
+        margin: 0 0 $space-medium 0;
     }
 }

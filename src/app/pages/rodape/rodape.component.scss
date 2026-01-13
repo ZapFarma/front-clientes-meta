@@ -6,7 +6,7 @@ html {
 
 a {
     text-decoration: none;
-    color: #ffffff;
+    color: $primary-color;
     cursor: pointer;
 }
     
@@ -15,9 +15,9 @@ a {
     &__container_10 {
         background-repeat: no-repeat;
         background-image: none;
-        background-color: #000000;
+        background-color: #ffffff;
         background-position-y: 0;
-        color: #ffffff;
+        color: $primary-color;
 
         @media screen and (max-width: 768px) {
             display: block;
@@ -35,16 +35,16 @@ a {
                 padding: 24px clamp($space-x-large, 8vw, 180px) 24px;
             }
             margin-left: 0;
-            border-top: 1px solid rgba(#ffffff, 0.15);
+            border-top: 1px solid rgba($primary-color, 0.15);
 
             span {
-                color: #ffffff;
+                color: $primary-color;
                 padding-bottom: $space-small;
                 display: flex;
             }
 
             p {
-                color: #ffffff;
+                color: $primary-color;
                 margin: $space-small 0;
             }
 

@@ -144,9 +144,9 @@ export class HomeComponent implements OnInit {
       const contato = this.formulario.get('contato')?.value;
       const emailContato = this.formulario.get('emailContato')?.value;
 
-      const mensagem = `Olá, eu sou *${nomeFarmacia}*, %0AEstou acessando o site da Zapfarma e gostaria de mais informações, seguem meus dados:%0A%0A*Contato*:%0A${contato}%0A*Email de contato:*%0A${emailContato}`;
+      const mensagem = `Olá, eu sou *${nomeFarmacia}*, %0AEstou acessando o site da Drogaria Anna Cintra e gostaria de mais informações, seguem meus dados:%0A%0A*Contato*:%0A${contato}%0A*Email de contato:*%0A${emailContato}`;
 
-      const linkWhatsApp = `https://wa.me/552135205492?text=${mensagem}`;
+      const linkWhatsApp = `https://wa.me/5519996448523?text=${mensagem}`;
       window.open(linkWhatsApp, '_blank');
     }
   }
@@ -162,7 +162,7 @@ export class HomeComponent implements OnInit {
     const texto = encodeURIComponent(
       `Olá, sou ${nome}.\nTelefone: ${contato}\n${mensagemExtra}`
     );
-    const linkWhatsApp = `https://wa.me/5521964276919?text=${texto}`;
+    const linkWhatsApp = `https://wa.me/5519996448523?text=${texto}`;
     window.open(linkWhatsApp, '_blank');
   }
 }
