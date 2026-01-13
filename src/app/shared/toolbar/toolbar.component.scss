@@ -5,18 +5,21 @@
   width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
+  min-height: 24px;
 }
 
 .zf-navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   width: 100%;
   box-sizing: border-box;
   background: linear-gradient(135deg, rgba($primary-color, 0.95), rgba(#050f3a, 0.95));
   backdrop-filter: blur(8px);
   color: $color-wh;
-  padding: $space-small clamp($space-small, 3vw, $space-x-large);
+  padding: $space-small clamp(0px, 4vw, 0px);
   box-shadow: 0 8px 24px rgba(#000, 0.3);
   display: flex;
   flex-direction: column;
@@ -31,6 +34,7 @@
   gap: $space-medium;
   flex-wrap: wrap;
   row-gap: $space-small;
+  padding-inline: clamp($space-medium, 4vw, $space-x-large);
 }
 
 .brand {
@@ -42,7 +46,7 @@
   min-width: 120px;
 
   img {
-    width: clamp(72px, 6vw, 110px);
+    width: clamp(90px, 8vw, 130px);
     height: auto;
   }
 }
@@ -139,7 +143,7 @@
   max-width: 420px;
   box-sizing: border-box;
   align-items: flex-start;
-  padding-left: 0;
+  padding: 0 clamp($space-medium, 4vw, $space-large);
   align-self: flex-start;
 }
 
@@ -171,18 +175,12 @@
 
 .nav-link {
   display: flex;
-  align-items: center;
-  gap: $space-small;
+  align-items: flex-start;
+  gap: 8px;
   padding: 0.65rem 0;
   text-decoration: none;
   color: $color-wh;
   border-bottom: 1px solid rgba($color-wh, 0.12);
-
-  mat-icon {
-    font-size: 20px;
-    color: $secondary-color;
-    flex-shrink: 0;
-  }
 
   span {
     font-weight: 600;

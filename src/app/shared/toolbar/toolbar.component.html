@@ -1,12 +1,13 @@
 <nav class="zf-navbar" [class.menu-open]="mobileMenuOpen">
   <div class="navbar-shell">
-    <a class="brand" routerLink="/" (click)="closeMenu()" aria-label="ZapFarma - voltar para o início">
-      <img src="assets/imgs/logo-zap-branca.png" alt="Logo ZapFarma" />
+    <a class="brand" routerLink="/" (click)="closeMenu()" aria-label="Voltar para o início">
+      Siqueira Alves Drogaria
+      <!-- <img src="assets/imgs/drogarias-mais-barato-logo.png" alt="Drogarias Mais Barato" /> -->
     </a>
 
     <div class="shell-actions">
-      <a class="pill ghost" href="#front-zapfarma-home__container_08" (click)="closeMenu()">
-        Ver planos
+      <a class="pill ghost" [routerLink]="'/nossas-lojas'" (click)="closeMenu()">
+        Nossas lojas
       </a>
       <button
         class="nav-toggle"
@@ -32,7 +33,6 @@
           [href]="link.href"
           (click)="closeMenu()"
         >
-          <mat-icon [fontIcon]="link.icon"></mat-icon>
           <div>
             <span>{{ link.label }}</span>
             <small>{{ link.description }}</small>
@@ -44,7 +44,6 @@
           [routerLink]="link.routerLink"
           (click)="closeMenu()"
         >
-          <mat-icon [fontIcon]="link.icon"></mat-icon>
           <div>
             <span>{{ link.label }}</span>
             <small>{{ link.description }}</small>
@@ -63,7 +62,6 @@
             [routerLink]="link.routerLink"
             (click)="closeMenu()"
           >
-            <mat-icon [fontIcon]="link.icon"></mat-icon>
             <div>
               <span>{{ link.label }}</span>
               <small>{{ link.description }}</small>

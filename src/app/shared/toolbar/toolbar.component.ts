@@ -12,7 +12,7 @@ import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 type NavLink = {
   label: string;
   description: string;
-  icon: string;
+  icon?: string;
   href?: string;
   routerLink?: string;
 };
@@ -35,34 +35,9 @@ export class ToolbarComponent {
 
   readonly publicLinks: NavLink[] = [
     {
-      label: 'Planos sob medida',
-      description: 'Conheça os pacotes para cada porte de drogaria.',
-      icon: 'layers',
-      href: '#front-zapfarma-home__container_08',
-    },
-    {
-      label: 'Perguntas frequentes',
-      description: 'Principais dúvidas sobre a IA ZapFarma.',
-      icon: 'help',
-      href: '#front-zapfarma-home__container_09',
-    },
-    {
-      label: 'Fale com nosso time',
-      description: 'Abrir canal direto com especialistas.',
-      icon: 'support_agent',
-      href: '#front-zapfarma-home__container_10',
-    },
-    {
-      label: 'Sobre a plataforma',
-      description: 'Nossa visão sobre IA para atendimento.',
-      icon: 'chat_bubble',
-      routerLink: '/sobre',
-    },
-    {
-      label: 'WhatsApp Cloud API',
-      description: 'Entenda a API oficial do Meta para empresas.',
-      icon: 'cloud',
-      routerLink: '/whatsapp-cloud-api',
+      label: 'Nossas lojas',
+      description: 'Encontre o endereço mais próximo de você.',
+      routerLink: '/nossas-lojas',
     },
   ];
 
@@ -70,19 +45,16 @@ export class ToolbarComponent {
     {
       label: 'Dashboard do cliente',
       description: 'Métricas em tempo real e recomendações.',
-      icon: 'monitoring',
       routerLink: '/dashboard',
     },
     {
       label: 'Configurações da IA',
       description: 'Edite fluxos, regras e integrações.',
-      icon: 'settings',
       routerLink: '/onboarding-ia/lista',
     },
     {
       label: 'Treinamentos e suporte',
       description: 'Base de conhecimento premium e chamados.',
-      icon: 'school',
       routerLink: '/treinamentos',
     },
   ];

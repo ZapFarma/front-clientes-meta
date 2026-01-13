@@ -1,0 +1,17 @@
+<svg width="320" height="240" viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="240" rx="18" fill="#0F3059"/>
+  <rect x="18" y="90" width="284" height="112" rx="14" fill="#0C2340" stroke="#6ABE50" stroke-width="3"/>
+  <rect x="46" y="110" width="72" height="76" fill="#122A4A"/>
+  <rect x="136" y="110" width="48" height="76" fill="#122A4A"/>
+  <rect x="202" y="110" width="72" height="76" fill="#122A4A"/>
+  <rect x="90" y="130" width="20" height="36" rx="4" fill="#6ABE50"/>
+  <rect x="144" y="134" width="32" height="52" rx="4" fill="#6ABE50"/>
+  <rect x="222" y="130" width="20" height="36" rx="4" fill="#6ABE50"/>
+  <rect x="42" y="82" width="236" height="20" rx="6" fill="#6ABE50"/>
+  <rect x="70" y="64" width="180" height="16" rx="6" fill="#8ADB70"/>
+  <circle cx="56" cy="92" r="10" fill="#122A4A" stroke="#8ADB70" stroke-width="4"/>
+  <circle cx="264" cy="92" r="10" fill="#122A4A" stroke="#8ADB70" stroke-width="4"/>
+  <rect x="150" y="38" width="20" height="16" rx="6" fill="#6ABE50"/>
+  <circle cx="160" cy="30" r="8" fill="#6ABE50"/>
+  <rect x="126" y="190" width="68" height="12" rx="6" fill="#6ABE50" opacity="0.7"/>
+</svg>

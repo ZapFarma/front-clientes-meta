@@ -30,7 +30,7 @@ register();
 @Component({
   selector: 'front-zapfarma-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss', './wp-lite.css', './style9030.css'],
+  styleUrls: ['./home.component.scss', './home.component.contato.scss', './wp-lite.css', './style9030.css'],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -75,7 +75,8 @@ export class HomeComponent implements OnInit {
     this.formulario = new FormGroup({
       nomeFarmacia: new FormControl('', Validators.required),
       contato: new FormControl('', Validators.required),
-      emailContato: new FormControl('', [Validators.required, Validators.email]),
+      emailContato: new FormControl('', [Validators.email]),
+      mensagem: new FormControl('', Validators.required),
     });
 
     this.calcForm = new FormGroup({
@@ -148,5 +149,20 @@ export class HomeComponent implements OnInit {
       const linkWhatsApp = `https://wa.me/552135205492?text=${mensagem}`;
       window.open(linkWhatsApp, '_blank');
     }
+  }
+
+  enviarWhatsapp(): void {
+    if (this.formulario.invalid) {
+      this.formulario.markAllAsTouched();
+      return;
+    }
+    const nome = this.formulario.get('nomeFarmacia')?.value;
+    const contato = this.formulario.get('contato')?.value;
+    const mensagemExtra = this.formulario.get('mensagem')?.value || '';
+    const texto = encodeURIComponent(
+      `Olá, sou ${nome}.\nTelefone: ${contato}\n${mensagemExtra}`
+    );
+    const linkWhatsApp = `https://wa.me/5521964276919?text=${texto}`;
+    window.open(linkWhatsApp, '_blank');
   }
 }

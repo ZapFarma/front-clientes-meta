@@ -1,0 +1,51 @@
+<svg width="640" height="640" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="40" x2="520" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C2340" />
+      <stop offset="1" stop-color="#0A2E63" />
+    </linearGradient>
+    <linearGradient id="pill" x1="130" y1="250" x2="360" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6ABE50" />
+      <stop offset="1" stop-color="#8ADB70" />
+    </linearGradient>
+    <linearGradient id="screen" x1="360" y1="120" x2="360" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F3059" />
+      <stop offset="1" stop-color="#0B1F3A" />
+    </linearGradient>
+  </defs>
+  <rect width="640" height="640" rx="48" fill="url(#bg)" />
+  <circle cx="320" cy="320" r="220" fill="#0E3B6D" opacity="0.35" />
+  <circle cx="320" cy="320" r="180" fill="#0E3B6D" opacity="0.25" />
+
+  <rect x="240" y="120" width="200" height="400" rx="32" fill="#0B1729" stroke="#1B5DB5" stroke-width="4" />
+  <rect x="258" y="158" width="164" height="324" rx="22" fill="url(#screen)" />
+  <rect x="310" y="132" width="64" height="8" rx="4" fill="#1B5DB5" />
+  <rect x="318" y="474" width="48" height="10" rx="5" fill="#1B5DB5" />
+
+  <rect x="278" y="186" width="126" height="18" rx="9" fill="#0E3B6D" opacity="0.6" />
+  <rect x="278" y="214" width="142" height="20" rx="10" fill="#0E3B6D" opacity="0.7" />
+  <rect x="278" y="246" width="118" height="18" rx="9" fill="#0E3B6D" opacity="0.55" />
+  <rect x="278" y="278" width="152" height="20" rx="10" fill="#0E3B6D" opacity="0.8" />
+  <rect x="278" y="310" width="134" height="20" rx="10" fill="#0E3B6D" opacity="0.6" />
+  <rect x="278" y="342" width="148" height="20" rx="10" fill="#0E3B6D" opacity="0.7" />
+
+  <rect x="156" y="270" width="210" height="108" rx="24" fill="url(#pill)" />
+  <rect x="170" y="284" width="182" height="80" rx="20" fill="white" opacity="0.12" />
+  <path d="M180 324h92c12 0 22 10 22 22v4c0 12-10 22-22 22h-92c-12 0-22-10-22-22v-4c0-12 10-22 22-22z" fill="#0C2340"/>
+  <path d="M294 324h92c12 0 22 10 22 22v4c0 12-10 22-22 22h-92c-12 0-22-10-22-22v-4c0-12 10-22 22-22z" fill="#CDEAD3"/>
+  <rect x="200" y="292" width="30" height="30" rx="6" fill="#0C2340" opacity="0.2" />
+  <text x="212" y="312" fill="#0C2340" font-family="Arial, sans-serif" font-size="12" font-weight="700">Rx</text>
+
+  <rect x="430" y="200" width="70" height="70" rx="14" fill="#6ABE50" opacity="0.75" />
+  <path d="M452 218h26c6 0 10 4 10 10v26c0 6-4 10-10 10h-26c-6 0-10-4-10-10v-26c0-6 4-10 10-10z" stroke="white" stroke-width="6" stroke-linecap="round" />
+  <path d="M456 244h22" stroke="white" stroke-width="6" stroke-linecap="round" />
+  <path d="M467 233v22" stroke="white" stroke-width="6" stroke-linecap="round" />
+
+  <circle cx="188" cy="198" r="24" fill="#6ABE50" opacity="0.6" />
+  <circle cx="470" cy="380" r="18" fill="#6ABE50" opacity="0.4" />
+  <circle cx="220" cy="436" r="10" fill="#6ABE50" opacity="0.5" />
+  <circle cx="438" cy="162" r="10" fill="#6ABE50" opacity="0.5" />
+
+  <rect x="296" y="384" width="128" height="24" rx="12" fill="#6ABE50" opacity="0.9" />
+  <text x="308" y="401" fill="#0B1F3A" font-family="Arial, sans-serif" font-size="13" font-weight="700">Atendimento digital</text>
+</svg>

@@ -25,6 +25,7 @@ import { TermosUsoComponent } from './pages/termos-uso/termos-uso.component';
 import { ConfiguracaoIaComponent } from './pages/configuracao-ia/configuracao-ia.component';
 import { ConfiguracaoIaListaComponent } from './pages/configuracao-ia-lista/configuracao-ia-lista.component';
 import { WhatsappCloudApiComponent } from './pages/whatsapp-cloud-api/whatsapp-cloud-api.component';
+import { LojasComponent } from './pages/lojas/lojas.component';
 
 
 export const appRoutes: Route[] = [
@@ -53,6 +54,7 @@ export const appRoutes: Route[] = [
     { path: 'onboarding-ia', component: ConfiguracaoIaComponent },
     { path: 'onboarding-ia/lista', component: ConfiguracaoIaListaComponent },
     { path: 'whatsapp-cloud-api', component: WhatsappCloudApiComponent },
+    { path: 'nossas-lojas', component: LojasComponent },
     
 ];
 
