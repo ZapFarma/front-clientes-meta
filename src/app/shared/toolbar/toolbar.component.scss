@@ -16,7 +16,7 @@
   z-index: 1000;
   width: 100%;
   box-sizing: border-box;
-  background: linear-gradient(135deg, rgba($primary-color, 0.95), rgba(#050f3a, 0.95));
+  background: linear-gradient(135deg, rgba($primary-color, 0.95), rgba($primary-color-light, 0.95));
   backdrop-filter: blur(8px);
   color: $color-wh;
   padding: $space-small clamp(0px, 4vw, 0px);
