@@ -8,7 +8,9 @@
     &__image-login {
         background-color: $primary-palette-variant3;
         width: 40%;
-        height: 100vh;
+        min-height: 100vh;
+        min-height: 100dvh;
+        height: auto;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -17,7 +19,9 @@
     &__login {
         background-color: $color-background-wh;
         width: 60%;
-        height: 100vh;
+        min-height: 100vh;
+        min-height: 100dvh;
+        height: auto;
         display: grid;
         justify-content: center;
         align-items: center;

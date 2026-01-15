@@ -107,6 +107,12 @@
   }
 }
 
+.nav-store-link {
+  .label-short {
+    display: none;
+  }
+}
+
 .nav-toggle {
   width: 44px;
   height: 44px;
@@ -206,5 +212,42 @@
 @media (min-width: 1024px) {
   .zf-navbar {
     gap: $space-large;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-shell {
+    grid-template-columns: auto 1fr auto;
+    column-gap: $space-small;
+  }
+
+  .brand {
+    position: static;
+    transform: none;
+    justify-self: center;
+  }
+
+  .brand-logo {
+    height: 44px;
+    max-width: 160px;
+  }
+
+  .nav-right {
+    justify-content: flex-end;
+  }
+
+  .nav-right .pill {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .nav-store-link {
+    .label-full {
+      display: none;
+    }
+
+    .label-short {
+      display: inline;
+    }
   }
 }

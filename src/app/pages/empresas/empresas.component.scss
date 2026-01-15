@@ -13,7 +13,8 @@
             mat-card {
                 border-radius: $space-medium;
                 border: 0;
-                height: 90vh;        
+                min-height: 90vh;
+                height: auto;
                 box-shadow: 0px 0px 4px #e1e1e1;
             }
         }
@@ -24,7 +25,8 @@
     cursor: pointer;
 }
 table {
-    width: 850px;
+    width: 100%;
+    min-width: 850px;
 }
 .mat-container {
     // height: 400px;
@@ -36,6 +38,8 @@ table {
 .action-top {
     display: flex;
     justify-content: space-between;
+    gap: $space-small;
+    flex-wrap: wrap;
     mat-icon {
         vertical-align: middle;
     }
@@ -44,5 +48,17 @@ table {
 mat-form-field {
     width: 100%;
 }
+
+    @media (max-width: 768px) {
+        padding-inline: $space-small;
+
+        .front-zapfarma-dashboard-container {
+            flex-direction: column;
+        }
+
+        mat-card {
+            min-height: 0;
+        }
+    }
 
 }

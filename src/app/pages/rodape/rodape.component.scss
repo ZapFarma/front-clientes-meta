@@ -41,6 +41,7 @@ a {
                 color: $primary-color;
                 padding-bottom: $space-small;
                 display: flex;
+                font-weight: 700;
             }
 
             p {
@@ -59,7 +60,10 @@ a {
                 position: relative;
             }
             @media screen and (max-width: 640px) {
-                display: inline;
+                display: flex;
+                flex-direction: column;
+                gap: $space-large;
+                padding: $space-large $space-medium;
             }
                
 

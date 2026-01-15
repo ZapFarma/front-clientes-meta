@@ -35,9 +35,14 @@ export class ToolbarComponent {
 
   readonly publicLinks: NavLink[] = [
     {
-      label: 'Nossas lojas',
+      label: 'Nossa loja',
       description: 'Encontre o endereço mais próximo de você.',
       routerLink: '/nossas-lojas',
+    },
+    {
+      label: 'Sobre',
+      description: 'Conheça a nossa história e propósito.',
+      routerLink: '/sobre',
     },
   ];
 
