@@ -27,7 +27,7 @@ export class LojasComponent {
       name: 'Drogaria Mundial Rápida da Coronel',
       address: 'Rua Coronel Moreira Cesar, 001 lt2',
       phones: ['(21) 96667-0226', '(21) 97346-6002'],
-      mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Rua+Coronel+Moreira+Cesar,+001+lt2,+21655-180',
+      mapsUrl: 'https://maps.app.goo.gl/8LZSg2cLsoF3x6Tn7',
       photo: 'assets/imgs/logo-mundial.png',
     },
   ];
