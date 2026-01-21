@@ -1,5 +1,40 @@
 <front-zapfarma-toolbar></front-zapfarma-toolbar>
 <div class="front-zapfarma-home">
+        <section class="front-zapfarma-home__container_contato" id="front-zapfarma-home__container_contato">
+        <div class="front-zapfarma-home__container_contato__camada">
+            <div class="front-zapfarma-home__container_contato__titulo">
+                <h2>Fale com a drogaria pelo WhatsApp</h2>
+                <p>Envie sua mensagem e falaremos pelo número oficial: <strong>(21) 96667-0226</strong>.</p>
+            </div>
+            <div class="front-zapfarma-home__container_contato__form">
+                <form [formGroup]="formulario">
+                    <label for="nome-contato">Seu nome</label>
+                    <input id="nome-contato" type="text" formControlName="nomeFarmacia" placeholder="Seu nome" required />
+
+                    <label for="telefone-contato">Telefone com DDD</label>
+                    <input
+                      id="telefone-contato"
+                      type="tel"
+                      formControlName="contato"
+                      placeholder="(21) 99999-9999"
+                      mask="(00) 00000-0000||(00) 0000-0000"
+                      required
+                    />
+
+                    <label for="mensagem-contato">Mensagem</label>
+                    <textarea
+                      id="mensagem-contato"
+                      rows="3"
+                      formControlName="mensagem"
+                      placeholder="Escreva sua dúvida ou pedido"
+                      required
+                    ></textarea>
+
+                    <button type="button" (click)="enviarWhatsapp()">Enviar no WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
     <section class="front-zapfarma-home__container_01" id="front-zapfarma-home__container_01">
         <div class="front-zapfarma-home__container_01__camada">
             <div class="front-zapfarma-home__container_01__titulo">
@@ -37,41 +72,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <section class="front-zapfarma-home__container_contato" id="front-zapfarma-home__container_contato">
-        <div class="front-zapfarma-home__container_contato__camada">
-            <div class="front-zapfarma-home__container_contato__titulo">
-                <h2>Fale com a drogaria pelo WhatsApp</h2>
-                <p>Envie sua mensagem e falaremos pelo número oficial: <strong>(21) 96667-0226</strong>.</p>
-            </div>
-            <div class="front-zapfarma-home__container_contato__form">
-                <form [formGroup]="formulario">
-                    <label for="nome-contato">Seu nome</label>
-                    <input id="nome-contato" type="text" formControlName="nomeFarmacia" placeholder="Seu nome" required />
-
-                    <label for="telefone-contato">Telefone com DDD</label>
-                    <input
-                      id="telefone-contato"
-                      type="tel"
-                      formControlName="contato"
-                      placeholder="(21) 99999-9999"
-                      mask="(00) 00000-0000||(00) 0000-0000"
-                      required
-                    />
-
-                    <label for="mensagem-contato">Mensagem</label>
-                    <textarea
-                      id="mensagem-contato"
-                      rows="3"
-                      formControlName="mensagem"
-                      placeholder="Escreva sua dúvida ou pedido"
-                      required
-                    ></textarea>
-
-                    <button type="button" (click)="enviarWhatsapp()">Enviar no WhatsApp</button>
-                </form>
             </div>
         </div>
     </section>
